@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: cardPrefab
       value: 
       objectReference: {fileID: 7564314670473754559, guid: a769b80bfc7aae54596ea2e57297a2fc, type: 3}
+    - target: {fileID: 2408127125318982445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: cardDescription
+      value: 
+      objectReference: {fileID: 11400000, guid: fbfe0f23a2fe2af4d9a2c468ad48baf8, type: 2}
     - target: {fileID: 6055786044643518568, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_Name
       value: Milk Card

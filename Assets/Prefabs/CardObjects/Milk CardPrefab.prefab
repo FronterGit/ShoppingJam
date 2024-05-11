@@ -61,6 +61,10 @@ PrefabInstance:
       value: Milk
       objectReference: {fileID: 0}
     - target: {fileID: 8175275533943192973, guid: f90e8c1fedfe19b48a892fdcbfe0fb32, type: 3}
+      propertyPath: productInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: e758f9098dce79145b92d30e3aaf6520, type: 2}
+    - target: {fileID: 8175275533943192973, guid: f90e8c1fedfe19b48a892fdcbfe0fb32, type: 3}
       propertyPath: productValue
       value: 1
       objectReference: {fileID: 0}

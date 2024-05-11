@@ -32,7 +32,7 @@ public class ProductsRow : MonoBehaviour
         //Update the images
         for (int i = 0; i < products.Count; i++)
         {
-            productImages[i].sprite = products[i].icon;
+            productImages[i].sprite = products[i].productInfo.productIcon;
         }
     }
     

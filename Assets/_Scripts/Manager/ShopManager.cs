@@ -81,7 +81,7 @@ public class ShopManager : MonoBehaviour
         {
             case Card.Category.Product:
                 Product product = e.card as Product;
-                activeProductsDict[product.productType.ToString()].products.Add(product);
+                activeProductsDict[product.productInfo.productType.ToString()].products.Add(product);
                 UpdateTotalProductsValue();
                 break;
             case Card.Category.Employee:
@@ -102,7 +102,7 @@ public class ShopManager : MonoBehaviour
         {
             case Card.Category.Product:
                 Product product = e.card as Product;
-                activeProductsDict.Remove(product.productType.ToString());
+                activeProductsDict.Remove(product.productInfo.productType.ToString());
                 UpdateTotalProductsValue();
                 break;
             case Card.Category.Employee:

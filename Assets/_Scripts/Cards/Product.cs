@@ -11,9 +11,8 @@ public class Product : Card, ProductBehaviour
         Meat,
         Vegetable
     }
-    public ProductType productType;
-    
-    public int productValue;
+
+    public ProductInfo productInfo;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +27,6 @@ public class Product : Card, ProductBehaviour
     
     public int GetProductValue()
     {
-        return productValue;
+        return productInfo.productValue;
     }
 }

@@ -39,6 +39,21 @@ public class ShopInterfaceController : MonoBehaviour
         currentMenuIndex = 0;
     }
     
+    public void NavigateMenu(int index)
+    {
+        shopMenus[currentMenuIndex].SetActive(false);
+        currentMenuIndex += index;
+        if (currentMenuIndex < 0)
+        {
+            currentMenuIndex = shopMenus.Count - 1;
+        }
+        else if (currentMenuIndex >= shopMenus.Count)
+        {
+            currentMenuIndex = 0;
+        }
+        shopMenus[currentMenuIndex].SetActive(true);
+    }
+    
     private void UpdateShopInterface(UpdateShopUIEvent e)
     {
         //If the card is null, we will update the entire UI
@@ -80,7 +95,7 @@ public class ShopInterfaceController : MonoBehaviour
                 Product product = e.card as Product;
                 
                 //Look up the corresponding row in the dictionary and update the products
-                ProductsRow productsRow = productRowsDict[product.productType.ToString()].GetComponent<ProductsRow>();
+                ProductsRow productsRow = productRowsDict[product.productInfo.productType.ToString()].GetComponent<ProductsRow>();
                 
                 //Tell that row to update its products
                 productsRow.UpdateProducts();

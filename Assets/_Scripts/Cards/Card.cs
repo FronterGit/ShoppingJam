@@ -13,10 +13,9 @@ public class Card : MonoBehaviour
         Employee,
         Upgrade
     }
-    public string cardName;
     public Category category;
+    public CardDescription cardDescription;
     public GameObject cardPrefab;
-    public Sprite icon;
 
     public void OnClick()
     {
