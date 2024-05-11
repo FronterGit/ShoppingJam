@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using EventBus;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Cards
 {

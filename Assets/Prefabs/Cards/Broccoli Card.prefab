@@ -35,18 +35,18 @@ PrefabInstance:
     - target: {fileID: 2408127125318982445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: cardPrefab
       value: 
-      objectReference: {fileID: 7564314670473754559, guid: c2c1ce6371e065d46bffc7d238676aea, type: 3}
+      objectReference: {fileID: 7564314670473754559, guid: a769b80bfc7aae54596ea2e57297a2fc, type: 3}
     - target: {fileID: 2408127125318982445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: productInfo
       value: 
-      objectReference: {fileID: 11400000, guid: 776c133640b16d8438fd69dac75e8738, type: 2}
+      objectReference: {fileID: 11400000, guid: b06de846ba2885f46b4657a1487bb1a1, type: 2}
     - target: {fileID: 2408127125318982445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: cardDescription
       value: 
-      objectReference: {fileID: 11400000, guid: 86cf34506b07ef244976cf489bd93ace, type: 2}
+      objectReference: {fileID: 11400000, guid: fbfe0f23a2fe2af4d9a2c468ad48baf8, type: 2}
     - target: {fileID: 6055786044643518568, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_Name
-      value: Meat Card
+      value: Broccoli Card
       objectReference: {fileID: 0}
     - target: {fileID: 9118661027989022499, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_Pivot.x

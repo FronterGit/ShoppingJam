@@ -62,8 +62,7 @@ public class CardManager : MonoBehaviour
                     if (ShopManager.activeProductsDict[productType].size >=
                         ShopManager.activeProductsDict[productType].products.Count + 1)
                     {
-                        //Add the product to the active products dictionary
-                        Instantiate(card.gameObject, new Vector3(0, 0, 0), Quaternion.identity, canvas.transform);
+                        Debug.Log("Product activated");
                     }
                     else
                     {
@@ -105,7 +104,7 @@ public class CardManager : MonoBehaviour
     
     public void DiscardCard(Card card)
     {
-        OnSuccessfulCardAction(card, false);
+        OnSuccessfulCardAction(card, true);
     }
     
     public void SpawnCard(Card card)
@@ -121,6 +120,7 @@ public class CardManager : MonoBehaviour
         {
             hand.Remove(card);
             Destroy(card.gameObject);
+            return;
         }
         
         

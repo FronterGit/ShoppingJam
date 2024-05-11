@@ -92,6 +92,8 @@ public class ShopManager : MonoBehaviour
         {
             case Card.Category.Product:
                 activeProductsDict[e.card.productInfo.productType.ToString()].products.Add(e.card);
+                Debug.Log("Product added, size of list: " +
+                          activeProductsDict[e.card.productInfo.productType.ToString()].size + " product count: " + activeProductsDict[e.card.productInfo.productType.ToString()].products.Count);
                 UpdateTotalProductsValue();
                 break;
             case Card.Category.Employee:

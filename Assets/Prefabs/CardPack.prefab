@@ -228,7 +228,7 @@ MonoBehaviour:
   cards:
   - {fileID: 4739225105682055338, guid: f7c953186f2b84c4b9bce1dc3f10d68f, type: 3}
   - {fileID: 4739225105682055338, guid: 0b868b37af4d9574d865371927985cb9, type: 3}
-  - {fileID: 4739225105682055338, guid: f7c953186f2b84c4b9bce1dc3f10d68f, type: 3}
+  - {fileID: 4739225105682055338, guid: 29ecb55907bd6744e8dfc91217738989, type: 3}
 --- !u!114 &2641957386822197866
 MonoBehaviour:
   m_ObjectHideFlags: 0
