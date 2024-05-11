@@ -46,7 +46,7 @@ namespace Cards
             
             if (inHand)
             {
-                CardManager.instance.CheckIfCardCanBeActivated(this);
+                CardManager.instance.CardAction(this);
             }
             else
             {

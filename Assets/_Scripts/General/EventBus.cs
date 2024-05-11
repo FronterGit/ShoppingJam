@@ -30,11 +30,22 @@ namespace EventBus
     {
     }
     
-    public class CardEvent : Event
+    public class ProductCardEvent : Event
     {
         public Card card;
         public bool open;
-        public CardEvent(Card card, bool open)
+        public ProductCardEvent(Card card, bool open)
+        {
+            this.card = card;
+            this.open = open;
+        }
+    }
+    
+    public class CustomerCardEvent : Event
+    {
+        public Card card;
+        public bool open;
+        public CustomerCardEvent(Card card, bool open)
         {
             this.card = card;
             this.open = open;
@@ -77,6 +88,22 @@ namespace EventBus
         public MoneyChangedEvent(int money)
         {
             this.money = money;
+        }
+    }
+    
+    public class StartTurnEvent : Event
+    {
+        public Turn turn;
+        public StartTurnEvent(Turn turn)
+        {
+            this.turn = turn;
+        }
+    }
+    
+    public class EndTurnEvent : Event
+    {
+        public EndTurnEvent()
+        {
         }
     }
 }
