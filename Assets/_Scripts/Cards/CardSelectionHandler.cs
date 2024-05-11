@@ -14,6 +14,10 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
 
     private Vector3 _originalPosition;
     private Vector3 _originalScale;
+    private bool _isMoving = false;
+
+    private int currentChildIndex;
+    private int toChildIndex;
 
     private Card card;
 
@@ -24,7 +28,11 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
         _originalScale = transform.localScale;
 
         card = GetComponent<Card>();
+
+        currentChildIndex = transform.GetSiblingIndex();
+
     }
+
 
     private IEnumerator MoveCard(bool startingAnimation)
     {
@@ -33,20 +41,34 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
         Vector3 endPosition;
         Vector3 endScale;
 
+        toChildIndex = cardHandParent.transform.childCount - 1;
+
+        if (currentChildIndex != toChildIndex)
+        {
+           currentChildIndex = transform.GetSiblingIndex();
+        }
+       
+       
+
         float elapsedTime = 0f;
         while(elapsedTime < _moveTime)
         {
+            _isMoving = true;
             elapsedTime += Time.deltaTime;
 
             if (startingAnimation)
             {
-                endPosition = new Vector3(_originalPosition.x, _originalPosition.y + _verticalMoveAmount, 0.1f);
+
+                transform.SetSiblingIndex(toChildIndex);
+                endPosition = new Vector3(_originalPosition.x, _originalPosition.y + _verticalMoveAmount, _originalPosition.z);
                 endScale = _originalScale * _scaleAmount;
             }
             else
             {
+                
                 endPosition = _originalPosition;
                 endScale = _originalScale;
+           
             }
             
             Vector3 lerpedPos = Vector3.Lerp(_originalPosition, endPosition, elapsedTime / _moveTime);
@@ -54,9 +76,11 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
 
             transform.position = lerpedPos;
             transform.localScale = lerpedScale;
+ 
 
             yield return null;
         }
+        _isMoving = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
