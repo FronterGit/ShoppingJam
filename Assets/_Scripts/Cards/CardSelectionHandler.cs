@@ -10,6 +10,8 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
     [SerializeField] private float _moveTime = 0.1f;
     [Range(0f, 2f), SerializeField] private float _scaleAmount = 1.1f;
 
+    private GameObject cardHandParent;
+
     private Vector3 _originalPosition;
     private Vector3 _originalScale;
 
@@ -17,6 +19,7 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
 
     private void Start()
     {
+        cardHandParent = GameObject.FindGameObjectsWithTag("HandParent")[0];
         _originalPosition = transform.position;
         _originalScale = transform.localScale;
 
@@ -24,9 +27,10 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
     }
 
     private IEnumerator MoveCard(bool startingAnimation)
-    {   
-        // get the card's current position
-        Vector3 endPosition = transform.position;
+    {
+        if (!card.inHand) yield break;
+
+        Vector3 endPosition;
         Vector3 endScale;
 
         float elapsedTime = 0f;
@@ -36,22 +40,19 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
 
             if (startingAnimation)
             {
-                endPosition = new Vector3(transform.position.x, transform.position.y + _verticalMoveAmount, transform.position.z + 0.1f);
+                endPosition = new Vector3(_originalPosition.x, _originalPosition.y + _verticalMoveAmount, 0.1f);
                 endScale = _originalScale * _scaleAmount;
             }
             else
             {
+                endPosition = _originalPosition;
                 endScale = _originalScale;
             }
-
-            //set the card's position to the end position
-            transform.position = endPosition;
-
-            //set its z position to 0.1 to make sure it's on top of the other cards
             
+            Vector3 lerpedPos = Vector3.Lerp(_originalPosition, endPosition, elapsedTime / _moveTime);
             Vector3 lerpedScale = Vector3.Lerp(transform.localScale, endScale, elapsedTime / _moveTime);
 
-           // transform.position = lerpedPos;
+            transform.position = lerpedPos;
             transform.localScale = lerpedScale;
 
             yield return null;

@@ -141,6 +141,7 @@ public class CardManager : MonoBehaviour
             GameObject newCard = Instantiate(card.gameObject, new Vector3(hand.Count * cardSpacing, cardHeight, 0), Quaternion.identity, cardHandParent);
             Card newCardScript = newCard.GetComponent<Card>();
             newCardScript.inHand = true;
+            newCard.transform.position = new Vector3(cardHandParent.position.x + hand.Count * cardSpacing, cardHandParent.transform.position.y, 0);
             hand.Add(newCardScript);
             
             Destroy(card.gameObject);

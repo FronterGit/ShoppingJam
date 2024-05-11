@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class CardEvents : MonoBehaviour
 {
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnMouseEnter()
     {
-        
+        Debug.Log("Mouse Enter");
+        animator.SetTrigger("AnimateUp");
+    }
+
+    public void OnMouseExit()
+    {
+        animator.SetTrigger("AnimateDown");
     }
 }
