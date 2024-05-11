@@ -9,6 +9,6 @@ public class ProductInfo : ScriptableObject
     public string productName;
     public int productValue;
     public Sprite productIcon;
-    public Product.ProductType productType;
+    public Card.ProductType productType;
     public string productDescription;
 }

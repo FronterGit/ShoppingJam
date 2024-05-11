@@ -113,8 +113,7 @@ public class ShopManager : MonoBehaviour
         switch (e.card.category)
         {
             case Card.Category.Product:
-                Product product = e.card as Product;
-                activeProductsDict.Remove(product.productInfo.productType.ToString());
+                activeProductsDict.Remove(e.card.productInfo.productType.ToString());
                 UpdateTotalProductsValue();
                 break;
             case Card.Category.Employee:
@@ -143,7 +142,7 @@ public class ShopManager : MonoBehaviour
     [System.Serializable]
     public class StartingProducts
     {
-        public Product.ProductType productType;
+        public Card.ProductType productType;
         public int amount;
     }
     
