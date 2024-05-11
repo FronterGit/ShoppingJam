@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ProductBehaviour
+namespace Cards
 {
-    public int GetProductValue();
+    public interface ProductBehaviour
+    {
+        public int GetProductValue();
+    }
 }
+

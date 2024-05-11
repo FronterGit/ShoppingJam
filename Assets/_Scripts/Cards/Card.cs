@@ -1,36 +1,46 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EventBus;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+namespace Cards
 {
-    public ProductBehaviour productBehaviour;
-    public bool inHand;
-    public enum Category
+    public class Card : MonoBehaviour
     {
-        Product,
-        Employee,
-        Upgrade
-    }
-    public Category category;
-    public CardDescription cardDescription;
-    public GameObject cardPrefab;
-
-    public void OnClick()
-    {
-        if (inHand)
+        public ProductBehaviour productBehaviour;
+        public bool inHand;
+        public enum Category
         {
-            CardManager.instance.SpawnCard(this);
+            Product,
+            Employee,
+            Upgrade
         }
-        else
+        public enum Rarity
         {
-            CardManager.instance.SetCardInHand(this);
+            Common,
+            Rare,
+            Epic,
+            Legendary
         }
-    }
+        public Rarity rarity;
+        public Category category;
+        public CardDescription cardDescription;
+        public GameObject cardPrefab;
 
-    private void Start()
-    {
-        transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform);
+        public void OnClick()
+        {
+            if (inHand)
+            {
+                CardManager.instance.ActivateCard(this);
+            }
+            else
+            {
+                CardManager.instance.SetCardInHand(this);
+                EventBus<CardPackEvent>.Raise(new CardPackEvent(null, false));
+            }
+        }
     }
 }
+
+

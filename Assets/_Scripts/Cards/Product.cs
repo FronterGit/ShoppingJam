@@ -3,30 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using EventBus;
 
-public class Product : Card, ProductBehaviour
+namespace Cards
 {
-    public enum ProductType
+    public class Product : Card, ProductBehaviour
     {
-        Dairy,
-        Meat,
-        Vegetable
-    }
+        public enum ProductType
+        {
+            Dairy,
+            Meat,
+            Vegetable
+        }
 
-    public ProductInfo productInfo;
-    // Start is called before the first frame update
-    void Start()
-    {
-        productBehaviour = this;
-        EventBus<CardEvent>.Raise(new CardEvent(this, true));
-    }
-    
-    private void OnDestroy()
-    {
-        EventBus<CardEvent>.Raise(new CardEvent(this, false));
-    }
-    
-    public int GetProductValue()
-    {
-        return productInfo.productValue;
+        public ProductInfo productInfo;
+        // Start is called before the first frame update
+        void Start()
+        {
+            productBehaviour = this;
+            EventBus<CardEvent>.Raise(new CardEvent(this, true));
+        }
+        
+        private void OnDestroy()
+        {
+            EventBus<CardEvent>.Raise(new CardEvent(this, false));
+        }
+        
+        public int GetProductValue()
+        {
+            return productInfo.productValue;
+        }
     }
 }
+

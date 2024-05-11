@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using EventBus;
 using UnityEngine;
 using UnityEngine.UI;
+using Cards;
 
 public class ShopInterfaceController : MonoBehaviour
 {

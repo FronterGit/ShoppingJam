@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using EventBus;
 
-public class Milk : Product
+namespace Cards
 {
+    public class Milk : Product
+    {
     
+    }
 }
+

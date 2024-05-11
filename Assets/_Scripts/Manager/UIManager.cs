@@ -1,34 +1,44 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EventBus;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("Top bar")]
     [SerializeField] TMPro.TextMeshProUGUI moneyText;
     [SerializeField] TMPro.TextMeshProUGUI customersText;
-    [SerializeField] private Camera mainCamera;
     
+    [Header("Shop Interface")]
     [SerializeField] private GameObject shopInterface;
     private bool shopOpen = false;
     private bool shopAnimating = false;
     [SerializeField] private float shopSpeed = 1f;
     [SerializeField] private RectTransform shopOpenPos;
     [SerializeField] private RectTransform shopClosedPos;
+    
+    [Header("Card Pack opening")]
+    [SerializeField] private Image cardPackOpeningBackground;
+    [SerializeField] private GameObject cardPackOpeningParent;
 
+    //TODO: Camera should be responsible for its own position
+    [Header("Camera")]
+    [SerializeField] private Camera mainCamera;
     [SerializeField] private Transform cameraCenterPos;
     [SerializeField] private Transform cameraOffsetPos;
 
     private void OnEnable()
     {
-        ShopManager.OnMoneyChanged += OnMoneyChanged;
-        ShopManager.OnCustomersChanged += OnCustomersChanged;
+        EventBus<MoneyChangedEvent>.Subscribe(OnMoneyChanged);
+        EventBus<CardPackEvent>.Subscribe(OnCardPackOpen);
     }
     
     private void OnDisable()
     {
-        ShopManager.OnMoneyChanged -= OnMoneyChanged;
-        ShopManager.OnCustomersChanged -= OnCustomersChanged;
+        EventBus<MoneyChangedEvent>.Unsubscribe(OnMoneyChanged);
+        EventBus<CardPackEvent>.Unsubscribe(OnCardPackOpen);
     }
 
     private void Start()
@@ -36,14 +46,9 @@ public class UIManager : MonoBehaviour
         mainCamera = Camera.main;
     }
 
-    void OnMoneyChanged(int money)
+    void OnMoneyChanged(MoneyChangedEvent e)
     {
-        moneyText.text = money.ToString();
-    }
-    
-    void OnCustomersChanged(int customers)
-    {
-        customersText.text = customers.ToString();
+        moneyText.text = e.money.ToString();
     }
     
     public void ToggleShop()
@@ -74,6 +79,18 @@ public class UIManager : MonoBehaviour
                     shopAnimating = false;
                 }
             }
+        }
+    }
+    
+    public void OnCardPackOpen(CardPackEvent e)
+    {
+        if (e.open)
+        {
+            cardPackOpeningBackground.gameObject.SetActive(true);
+        }
+        else
+        {
+            cardPackOpeningBackground.gameObject.SetActive(false);
         }
     }
 }

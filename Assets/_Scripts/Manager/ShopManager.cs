@@ -1,12 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cards;
 using EventBus;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
+    //RESPONSIBILITIES:
+    // 1. Keep track of the shop's resources
+    // 2. Keep track of the shop's active products, employees, and upgrades
+    // 3. Keep track of the shop's customers
+    
     public int customers;
     public int totalProductsValue;
     public int money;
@@ -26,6 +31,7 @@ public class ShopManager : MonoBehaviour
         TheMoneyHouse.ShopClicked += OnClick;
         EventBus<CardEvent>.Subscribe(ReceiveCard);
         EventBus<CardEvent>.Subscribe(RemoveCard);
+        EventBus<ChangeMoneyEvent>.Subscribe(OnChangeMoney);
     }
     
     private void OnDisable()
@@ -34,12 +40,12 @@ public class ShopManager : MonoBehaviour
         TheMoneyHouse.ShopClicked -= OnClick;
         EventBus<CardEvent>.Unsubscribe(ReceiveCard);
         EventBus<CardEvent>.Unsubscribe(RemoveCard);
+        EventBus<ChangeMoneyEvent>.Unsubscribe(OnChangeMoney);
     }
 
     void Start()
     {
-        OnMoneyChanged?.Invoke(money);
-        OnCustomersChanged?.Invoke(customers);
+        EventBus<MoneyChangedEvent>.Raise(new MoneyChangedEvent(money));
 
         InitializeActiveProductsDict();
     }
@@ -72,6 +78,11 @@ public class ShopManager : MonoBehaviour
         }
         customers = customersList.Count;
         OnCustomersChanged?.Invoke(customers);
+    }
+    
+    private void OnChangeMoney(ChangeMoneyEvent e)
+    {
+        money += e.money;
     }
     
     private void ReceiveCard(CardEvent e)
