@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    public List<Turn> turns = new List<Turn>();
+    public static List<Turn> turns = new List<Turn>();
     bool turnInProgress = false;
-    int turnIndex = 0;
+    public static int turnIndex = 0;
 
     private void OnEnable()
     {
@@ -42,6 +42,9 @@ public class TurnManager : MonoBehaviour
             Debug.Log("Game over");
             return;
         }
+        
+        //Request new customers list
+        EventBus<RequestNewCustomersListEvent>.Raise(new RequestNewCustomersListEvent());
     }
 }
 

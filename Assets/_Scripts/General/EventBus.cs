@@ -106,4 +106,11 @@ namespace EventBus
         {
         }
     }
+    
+    public class RequestNewCustomersListEvent : Event
+    {
+        public RequestNewCustomersListEvent()
+        {
+        }
+    }
 }

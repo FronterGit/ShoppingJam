@@ -17,6 +17,9 @@ public class ShopInterfaceController : MonoBehaviour
     [SerializeField] private GameObject productsRowPrefab;
     [SerializeField] private List<GameObject> productRows;
     private Dictionary<string, GameObject> productRowsDict = new Dictionary<string, GameObject>();
+    
+    [SerializeField] public GameObject customerPreviewPrefab;
+    [SerializeField] public GameObject customerPreviewColumn;
 
     private void OnEnable()
     {

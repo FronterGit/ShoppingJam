@@ -114,12 +114,7 @@ public class CardManager : MonoBehaviour
         OnSuccessfulCardAction(card, true);
     }
     
-    public void SpawnCardsToPick(Card card)
-    {
-        GameObject newCard = Instantiate(card.gameObject, new Vector3(0, 0, 0), Quaternion.identity, cardPackOpeningParent);
-        Card newCardScript = newCard.GetComponent<Card>();
-        cardsToPick.Add(newCardScript);
-    }
+
     
     public void OnSuccessfulCardAction(Card card, bool discard = false)
     {
@@ -158,6 +153,13 @@ public class CardManager : MonoBehaviour
             SpawnCardsToPick(card);
         }
         EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(-e.cardPack.cardPackValue));
+    }
+    
+    public void SpawnCardsToPick(Card card)
+    {
+        GameObject newCard = Instantiate(card.gameObject, new Vector3(0, 0, 0), Quaternion.identity, cardPackOpeningParent);
+        Card newCardScript = newCard.GetComponent<Card>();
+        cardsToPick.Add(newCardScript);
     }
     
     

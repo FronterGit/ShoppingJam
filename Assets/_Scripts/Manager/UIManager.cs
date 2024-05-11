@@ -9,7 +9,8 @@ public class UIManager : MonoBehaviour
 {
     [Header("Top bar")]
     [SerializeField] TMPro.TextMeshProUGUI moneyText;
-    [SerializeField] TMPro.TextMeshProUGUI customersText;
+
+    [SerializeField] private TMPro.TextMeshProUGUI turnText;
     
     [Header("Shop Interface")]
     [SerializeField] private GameObject shopInterface;
@@ -33,12 +34,14 @@ public class UIManager : MonoBehaviour
     {
         EventBus<MoneyChangedEvent>.Subscribe(OnMoneyChanged);
         EventBus<CardPackEvent>.Subscribe(OnCardPackOpen);
+        EventBus<StartTurnEvent>.Subscribe(IncreaseTurnIndex);
     }
     
     private void OnDisable()
     {
         EventBus<MoneyChangedEvent>.Unsubscribe(OnMoneyChanged);
         EventBus<CardPackEvent>.Unsubscribe(OnCardPackOpen);
+        EventBus<StartTurnEvent>.Unsubscribe(IncreaseTurnIndex);
     }
 
     private void Start()
@@ -92,5 +95,10 @@ public class UIManager : MonoBehaviour
         {
             cardPackOpeningBackground.gameObject.SetActive(false);
         }
+    }
+    
+    public void IncreaseTurnIndex(StartTurnEvent e)
+    {
+        turnText.text = e.turn.turnIndex.ToString();
     }
 }

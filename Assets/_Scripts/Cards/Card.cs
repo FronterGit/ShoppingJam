@@ -35,6 +35,7 @@ namespace Cards
         public Rarity rarity;
         public Category category;
         public ProductInfo productInfo;
+        public CustomerInfo customerInfo;
 
         public void OnClick()
         {
