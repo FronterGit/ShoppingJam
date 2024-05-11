@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ShopHitbox
   - Customer
+  - Canvas
   layers:
   - Default
   - TransparentFX

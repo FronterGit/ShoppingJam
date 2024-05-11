@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EventBus;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
@@ -10,6 +12,11 @@ public class ShopManager : MonoBehaviour
     public int money;
     public List<Customer> customersList = new List<Customer>();
     
+    public List<StartingProducts> startingProducts;
+    public static Dictionary<string, ProductHolder> activeProductsDict;
+    public static List<Card> activeEmployees = new List<Card>();
+    public static List<Card> activeUpgrades = new List<Card>();
+    
     public static event System.Action<int> OnMoneyChanged;
     public static event System.Action<int> OnCustomersChanged;
 
@@ -17,26 +24,34 @@ public class ShopManager : MonoBehaviour
     {
         Shop.OnCustomer += OnCustomer;
         TheMoneyHouse.ShopClicked += OnClick;
+        EventBus<CardEvent>.Subscribe(ReceiveCard);
+        EventBus<CardEvent>.Subscribe(RemoveCard);
     }
     
     private void OnDisable()
     {
         Shop.OnCustomer -= OnCustomer;
         TheMoneyHouse.ShopClicked -= OnClick;
+        EventBus<CardEvent>.Unsubscribe(ReceiveCard);
+        EventBus<CardEvent>.Unsubscribe(RemoveCard);
     }
 
     void Start()
     {
         OnMoneyChanged?.Invoke(money);
         OnCustomersChanged?.Invoke(customers);
+
+        InitializeActiveProductsDict();
     }
     
-    void Update()
+    private void InitializeActiveProductsDict()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        activeProductsDict = new Dictionary<string, ProductHolder>();
+        foreach(var product in startingProducts)
         {
-            OnClick();
+            activeProductsDict.Add(product.productType.ToString(), new ProductHolder(product.amount, new List<Product>()) );
         }
+        EventBus<UpdateShopUIEvent>.Raise(new UpdateShopUIEvent(null));
     }
 
     public void OnClick()
@@ -57,5 +72,78 @@ public class ShopManager : MonoBehaviour
         }
         customers = customersList.Count;
         OnCustomersChanged?.Invoke(customers);
+    }
+    
+    private void ReceiveCard(CardEvent e)
+    {
+        if (!e.open) return;
+        switch (e.card.category)
+        {
+            case Card.Category.Product:
+                Product product = e.card as Product;
+                activeProductsDict[product.productType.ToString()].products.Add(product);
+                UpdateTotalProductsValue();
+                break;
+            case Card.Category.Employee:
+                activeEmployees.Add(e.card);
+                break;
+            case Card.Category.Upgrade:
+                activeUpgrades.Add(e.card);
+                break;
+        }
+        
+        EventBus<UpdateShopUIEvent>.Raise(new UpdateShopUIEvent(e.card));
+    }
+
+    private void RemoveCard(CardEvent e)
+    {
+        if (e.open) return;
+        switch (e.card.category)
+        {
+            case Card.Category.Product:
+                Product product = e.card as Product;
+                activeProductsDict.Remove(product.productType.ToString());
+                UpdateTotalProductsValue();
+                break;
+            case Card.Category.Employee:
+                activeEmployees.Remove(e.card);
+                break;
+            case Card.Category.Upgrade:
+                activeUpgrades.Remove(e.card);
+                break;
+        }
+        
+        EventBus<UpdateShopUIEvent>.Raise(new UpdateShopUIEvent(e.card));
+    }
+    
+    private void UpdateTotalProductsValue()
+    {
+        totalProductsValue = 0;
+        foreach (var productType in activeProductsDict)
+        {
+            foreach (var product in productType.Value.products)
+            {
+                totalProductsValue += product.GetProductValue();
+            }
+        }
+    }
+    
+    [System.Serializable]
+    public class StartingProducts
+    {
+        public Product.ProductType productType;
+        public int amount;
+    }
+    
+    public class ProductHolder
+    {
+        public int size;
+        public List<Product> products;
+        
+        public ProductHolder(int size, List<Product> products)
+        {
+            this.size = size;
+            this.products = products;
+        }
     }
 }
