@@ -10,4 +10,5 @@ public class ProductInfo : ScriptableObject
     public int productValue;
     public Sprite productIcon;
     public Product.ProductType productType;
+    public string productDescription;
 }

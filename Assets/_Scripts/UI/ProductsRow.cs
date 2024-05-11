@@ -25,7 +25,7 @@ public class ProductsRow : MonoBehaviour
         }
         
         //Get the product list of our type
-        List<Product> products = ShopManager.activeProductsDict[productTypeTitle.text].products;
+        List<Card> products = ShopManager.activeProductsDict[productTypeTitle.text].products;
         
         Debug.Log(productImages.Count);
         Debug.Log(products.Count);

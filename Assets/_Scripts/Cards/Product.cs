@@ -13,8 +13,6 @@ namespace Cards
             Meat,
             Vegetable
         }
-
-        public ProductInfo productInfo;
         // Start is called before the first frame update
         void Start()
         {
@@ -27,9 +25,9 @@ namespace Cards
             EventBus<CardEvent>.Raise(new CardEvent(this, false));
         }
         
-        public int GetProductValue()
+        public ProductInfo GetProductInfo()
         {
-            return productInfo.productValue;
+            return productInfo;
         }
     }
 }

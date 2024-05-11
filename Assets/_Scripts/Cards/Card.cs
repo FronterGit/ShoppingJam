@@ -14,6 +14,7 @@ namespace Cards
         {
             Product,
             Employee,
+            Customer,
             Upgrade
         }
         public enum Rarity
@@ -25,11 +26,16 @@ namespace Cards
         }
         public Rarity rarity;
         public Category category;
-        public CardDescription cardDescription;
-        public GameObject cardPrefab;
+        public ProductInfo productInfo;
 
         public void OnClick()
         {
+            if (Input.GetKeyUp(KeyCode.Mouse1))
+            {
+                CardManager.instance.DiscardCard(this);
+                return;
+            }
+            
             if (inHand)
             {
                 CardManager.instance.ActivateCard(this);

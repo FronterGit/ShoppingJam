@@ -15,6 +15,7 @@ public class CardManager : MonoBehaviour
     private List<Card> spawnedCards = new List<Card>();
 
     [SerializeField] private Transform cardPackOpeningParent;
+    [SerializeField] private Transform cardHandParent;
     private Canvas canvas;
 
     private void OnEnable()
@@ -46,14 +47,53 @@ public class CardManager : MonoBehaviour
 
     public void ActivateCard(Card card)
     {
-        //TODO: Check if card is allowed to be played
-        Instantiate(card.cardPrefab, new Vector3(0, 0, 0), Quaternion.identity, canvas.transform);
-        UpdateHand(card);
+        //Depending on the card category, different actions will be taken
+        //IMPORTANT: Return out of the function if the card can't be activated.
+        switch (card.category)
+        {
+            //If the card is a product card...
+            case Card.Category.Product:
+                string productType = card.productInfo.productType.ToString();
+                
+                //Check if we have it's type in the active products dictionary
+                if (ShopManager.activeProductsDict.ContainsKey(productType))
+                {
+                    //Check if we have space for another product of this type
+                    if (ShopManager.activeProductsDict[productType].size >=
+                        ShopManager.activeProductsDict[productType].products.Count + 1)
+                    {
+                        //Add the product to the active products dictionary
+                        Instantiate(card.gameObject, new Vector3(0, 0, 0), Quaternion.identity, canvas.transform);
+                    }
+                    else
+                    {
+                        Debug.Log("Product can't be activated because the limit for this product type has been reached");
+                        return;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Product can't be activated because the product type is not in the active products dictionary");
+                    return;
+                }
+                break;
+            case Card.Category.Customer:
+                Debug.Log("Customer card activated");
+                break;
+            case Card.Category.Employee:
+                Debug.Log("Employee card activated");
+                break;
+            case Card.Category.Upgrade:
+                Debug.Log("Upgrade card activated");
+                break;
+        }
+        
+        OnSuccessfulCardAction(card);
     }
     
     public void SetCardInHand(Card card)
     {
-        UpdateHand(card);
+        OnSuccessfulCardAction(card);
         
         foreach (var spawnedCard in spawnedCards)
         {
@@ -61,7 +101,11 @@ public class CardManager : MonoBehaviour
         }
         
         spawnedCards.Clear();
-        
+    }
+    
+    public void DiscardCard(Card card)
+    {
+        OnSuccessfulCardAction(card, false);
     }
     
     public void SpawnCard(Card card)
@@ -71,18 +115,27 @@ public class CardManager : MonoBehaviour
         spawnedCards.Add(newCardScript);
     }
     
-    public void UpdateHand(Card card)
+    public void OnSuccessfulCardAction(Card card, bool discard = false)
     {
+        if (discard)
+        {
+            hand.Remove(card);
+            Destroy(card.gameObject);
+        }
+        
+        
         //If the card was in our hand, remove it from the hand list and destroy the game object
         if (card.inHand)
         {
             hand.Remove(card);
             Destroy(card.gameObject);
+
+            EventBus<CardEvent>.Raise(new CardEvent(card, true));
         }
         //If the card was not in our hand, add it to the hand list and create a new game object to show the card is in our hand
         else
         {
-            GameObject newCard = Instantiate(card.gameObject, new Vector3(hand.Count * cardSpacing, cardHeight, 0), Quaternion.identity, canvas.transform);
+            GameObject newCard = Instantiate(card.gameObject, new Vector3(hand.Count * cardSpacing, cardHeight, 0), Quaternion.identity, cardHandParent);
             Card newCardScript = newCard.GetComponent<Card>();
             newCardScript.inHand = true;
             hand.Add(newCardScript);

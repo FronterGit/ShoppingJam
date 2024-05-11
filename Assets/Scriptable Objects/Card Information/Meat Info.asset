@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ef2cab19c06bb94fab933a090ea611a, type: 3}
-  m_Name: Milk Description
+  m_Script: {fileID: 11500000, guid: d4aa19fd13447cd4dbaa133633a9d215, type: 3}
+  m_Name: Meat Info
   m_EditorClassIdentifier: 
-  cardTitle: Milk
-  cardDescription: You need some MILK
+  productName: Meat
+  productValue: 2
+  productIcon: {fileID: 21300000, guid: 5d86e458d2f7f9a48910761df0f3df85, type: 3}
+  productType: 1

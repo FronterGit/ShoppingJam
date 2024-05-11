@@ -6,7 +6,7 @@ namespace Cards
 {
     public interface ProductBehaviour
     {
-        public int GetProductValue();
+        public ProductInfo GetProductInfo();
     }
 }
 

@@ -55,7 +55,7 @@ public class ShopManager : MonoBehaviour
         activeProductsDict = new Dictionary<string, ProductHolder>();
         foreach(var product in startingProducts)
         {
-            activeProductsDict.Add(product.productType.ToString(), new ProductHolder(product.amount, new List<Product>()) );
+            activeProductsDict.Add(product.productType.ToString(), new ProductHolder(product.amount, new List<Card>()) );
         }
         EventBus<UpdateShopUIEvent>.Raise(new UpdateShopUIEvent(null));
     }
@@ -63,7 +63,7 @@ public class ShopManager : MonoBehaviour
     public void OnClick()
     {
         money += customers * totalProductsValue;
-        OnMoneyChanged?.Invoke(money);
+        EventBus<MoneyChangedEvent>.Raise(new MoneyChangedEvent(money));
     }
     
     public void OnCustomer(GameObject customer, bool isEntering)
@@ -91,8 +91,7 @@ public class ShopManager : MonoBehaviour
         switch (e.card.category)
         {
             case Card.Category.Product:
-                Product product = e.card as Product;
-                activeProductsDict[product.productInfo.productType.ToString()].products.Add(product);
+                activeProductsDict[e.card.productInfo.productType.ToString()].products.Add(e.card);
                 UpdateTotalProductsValue();
                 break;
             case Card.Category.Employee:
@@ -134,7 +133,7 @@ public class ShopManager : MonoBehaviour
         {
             foreach (var product in productType.Value.products)
             {
-                totalProductsValue += product.GetProductValue();
+                totalProductsValue += product.productInfo.productValue;
             }
         }
     }
@@ -149,9 +148,9 @@ public class ShopManager : MonoBehaviour
     public class ProductHolder
     {
         public int size;
-        public List<Product> products;
+        public List<Card> products;
         
-        public ProductHolder(int size, List<Product> products)
+        public ProductHolder(int size, List<Card> products)
         {
             this.size = size;
             this.products = products;

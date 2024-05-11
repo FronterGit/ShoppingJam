@@ -57,8 +57,10 @@ public class ShopInterfaceController : MonoBehaviour
     
     private void UpdateShopInterface(UpdateShopUIEvent e)
     {
+        Card card = e.card;
+        
         //If the card is null, we will update the entire UI
-        if (e.card == null)
+        if (card == null)
         {
             //Clear the product rows
             foreach (var productRow in productRowsDict)
@@ -92,11 +94,8 @@ public class ShopInterfaceController : MonoBehaviour
         {
             //If the card is a product...
             case Card.Category.Product:
-                //Take the card as a product
-                Product product = e.card as Product;
-                
                 //Look up the corresponding row in the dictionary and update the products
-                ProductsRow productsRow = productRowsDict[product.productInfo.productType.ToString()].GetComponent<ProductsRow>();
+                ProductsRow productsRow = productRowsDict[card.productInfo.productType.ToString()].GetComponent<ProductsRow>();
                 
                 //Tell that row to update its products
                 productsRow.UpdateProducts();

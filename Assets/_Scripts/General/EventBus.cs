@@ -34,7 +34,7 @@ namespace EventBus
     {
         public Card card;
         public bool open;
-        public CardEvent(Product card, bool open)
+        public CardEvent(Card card, bool open)
         {
             this.card = card;
             this.open = open;
