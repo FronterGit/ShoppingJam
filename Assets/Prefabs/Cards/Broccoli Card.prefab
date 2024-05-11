@@ -35,23 +35,23 @@ PrefabInstance:
     - target: {fileID: 2408127125318982445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: cardPrefab
       value: 
-      objectReference: {fileID: 7564314670473754559, guid: c2c1ce6371e065d46bffc7d238676aea, type: 3}
+      objectReference: {fileID: 7564314670473754559, guid: a769b80bfc7aae54596ea2e57297a2fc, type: 3}
     - target: {fileID: 2408127125318982445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: productInfo
       value: 
-      objectReference: {fileID: 11400000, guid: 776c133640b16d8438fd69dac75e8738, type: 2}
+      objectReference: {fileID: 11400000, guid: b06de846ba2885f46b4657a1487bb1a1, type: 2}
     - target: {fileID: 2408127125318982445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: cardDescription
       value: 
-      objectReference: {fileID: 11400000, guid: 86cf34506b07ef244976cf489bd93ace, type: 2}
+      objectReference: {fileID: 11400000, guid: fbfe0f23a2fe2af4d9a2c468ad48baf8, type: 2}
     - target: {fileID: 6055786044643518568, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_Name
-      value: Meat Card
+      value: Broccoli Card
       objectReference: {fileID: 0}
     - target: {fileID: 8015496492279057392, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 5865415908311741986}
+      objectReference: {fileID: 6373892454871341803}
     - target: {fileID: 8015496492279057392, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnClick
@@ -163,14 +163,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6055786044643518568, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5865415908311741986}
+      addedObject: {fileID: 6373892454871341803}
   m_SourcePrefab: {fileID: 100100000, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
 --- !u!1 &3793165108908831727 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6055786044643518568, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
   m_PrefabInstance: {fileID: 6966645050920147847}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5865415908311741986
+--- !u!114 &6373892454871341803
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,10 +179,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3793165108908831727}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cf1153984a26a941aecf51f052fba4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 0dcc6768cea0ba64b998e419c9805b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inHand: 0
   rarity: 0
   category: 0
-  productInfo: {fileID: 11400000, guid: 776c133640b16d8438fd69dac75e8738, type: 2}
+  productInfo: {fileID: 11400000, guid: b06de846ba2885f46b4657a1487bb1a1, type: 2}

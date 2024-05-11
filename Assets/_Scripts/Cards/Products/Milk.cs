@@ -5,9 +5,12 @@ using EventBus;
 
 namespace Cards
 {
-    public class Milk : Product
+    public class Milk : Card
     {
-    
+        public override void CardAction()
+        {
+            Debug.Log("Milk card action");
+        }
     }
 }
 

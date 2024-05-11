@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using EventBus;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Cards
 {
-    public class Card : MonoBehaviour
+    public abstract class Card : MonoBehaviour
     {
         public ProductBehaviour productBehaviour;
         public bool inHand;
@@ -24,6 +25,13 @@ namespace Cards
             Epic,
             Legendary
         }
+
+        public enum ProductType
+        {
+            Dairy,
+            Meat,
+            Vegetable
+        }
         public Rarity rarity;
         public Category category;
         public ProductInfo productInfo;
@@ -38,7 +46,7 @@ namespace Cards
             
             if (inHand)
             {
-                CardManager.instance.ActivateCard(this);
+                CardManager.instance.CheckIfCardCanBeActivated(this);
             }
             else
             {
@@ -46,6 +54,8 @@ namespace Cards
                 EventBus<CardPackEvent>.Raise(new CardPackEvent(null, false));
             }
         }
+
+        public abstract void CardAction();
     }
 }
 

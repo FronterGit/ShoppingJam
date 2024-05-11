@@ -12,7 +12,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] private float cardSpacing;
     [SerializeField] private float cardHeight;
     
-    private List<Card> spawnedCards = new List<Card>();
+    private List<Card> cardsToPick = new List<Card>();
 
     [SerializeField] private Transform cardPackOpeningParent;
     [SerializeField] private Transform cardHandParent;
@@ -45,7 +45,7 @@ public class CardManager : MonoBehaviour
         canvas = FindObjectOfType<Canvas>();
     }
 
-    public void ActivateCard(Card card)
+    public void CheckIfCardCanBeActivated(Card card)
     {
         //Depending on the card category, different actions will be taken
         //IMPORTANT: Return out of the function if the card can't be activated.
@@ -62,8 +62,7 @@ public class CardManager : MonoBehaviour
                     if (ShopManager.activeProductsDict[productType].size >=
                         ShopManager.activeProductsDict[productType].products.Count + 1)
                     {
-                        //Add the product to the active products dictionary
-                        Instantiate(card.gameObject, new Vector3(0, 0, 0), Quaternion.identity, canvas.transform);
+                        Debug.Log("Product activated");
                     }
                     else
                     {
@@ -88,31 +87,34 @@ public class CardManager : MonoBehaviour
                 break;
         }
         
+        //If we reach this point, the card can be activated
         OnSuccessfulCardAction(card);
     }
     
     public void SetCardInHand(Card card)
     {
+        //TODO: Hand size limit?
         OnSuccessfulCardAction(card);
         
-        foreach (var spawnedCard in spawnedCards)
+        //Remove any spawned cards
+        foreach (var pickingCards in cardsToPick)
         {
-            Destroy(spawnedCard.gameObject);
+            Destroy(pickingCards.gameObject);
         }
         
-        spawnedCards.Clear();
+        cardsToPick.Clear();
     }
     
     public void DiscardCard(Card card)
     {
-        OnSuccessfulCardAction(card, false);
+        OnSuccessfulCardAction(card, true);
     }
     
-    public void SpawnCard(Card card)
+    public void SpawnCardsToPick(Card card)
     {
         GameObject newCard = Instantiate(card.gameObject, new Vector3(0, 0, 0), Quaternion.identity, cardPackOpeningParent);
         Card newCardScript = newCard.GetComponent<Card>();
-        spawnedCards.Add(newCardScript);
+        cardsToPick.Add(newCardScript);
     }
     
     public void OnSuccessfulCardAction(Card card, bool discard = false)
@@ -121,6 +123,7 @@ public class CardManager : MonoBehaviour
         {
             hand.Remove(card);
             Destroy(card.gameObject);
+            return;
         }
         
         
@@ -149,7 +152,7 @@ public class CardManager : MonoBehaviour
         if(!e.open) return;
         foreach (var card in e.cardPack.cards)
         {
-            SpawnCard(card);
+            SpawnCardsToPick(card);
         }
         EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(-e.cardPack.cardPackValue));
     }

@@ -48,6 +48,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Milk Card
       objectReference: {fileID: 0}
+    - target: {fileID: 8015496492279057392, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5281903280572541651}
+    - target: {fileID: 8015496492279057392, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015496492279057392, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Cards.Card, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 9118661027989022499, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -144,8 +156,33 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2408127125318982445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6055786044643518568, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5281903280572541651}
   m_SourcePrefab: {fileID: 100100000, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+--- !u!1 &3793165108908831727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6055786044643518568, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+  m_PrefabInstance: {fileID: 6966645050920147847}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5281903280572541651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3793165108908831727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4dd8f69aa1b524d85b54c22c9ca220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inHand: 0
+  rarity: 0
+  category: 0
+  productInfo: {fileID: 11400000, guid: e758f9098dce79145b92d30e3aaf6520, type: 2}
