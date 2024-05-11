@@ -29,8 +29,8 @@ public class ShopManager : MonoBehaviour
     {
         Shop.OnCustomer += OnCustomer;
         TheMoneyHouse.ShopClicked += OnClick;
-        EventBus<CardEvent>.Subscribe(ReceiveCard);
-        EventBus<CardEvent>.Subscribe(RemoveCard);
+        EventBus<ProductCardEvent>.Subscribe(ReceiveCard);
+        EventBus<ProductCardEvent>.Subscribe(RemoveCard);
         EventBus<ChangeMoneyEvent>.Subscribe(OnChangeMoney);
     }
     
@@ -38,8 +38,8 @@ public class ShopManager : MonoBehaviour
     {
         Shop.OnCustomer -= OnCustomer;
         TheMoneyHouse.ShopClicked -= OnClick;
-        EventBus<CardEvent>.Unsubscribe(ReceiveCard);
-        EventBus<CardEvent>.Unsubscribe(RemoveCard);
+        EventBus<ProductCardEvent>.Unsubscribe(ReceiveCard);
+        EventBus<ProductCardEvent>.Unsubscribe(RemoveCard);
         EventBus<ChangeMoneyEvent>.Unsubscribe(OnChangeMoney);
     }
 
@@ -83,9 +83,10 @@ public class ShopManager : MonoBehaviour
     private void OnChangeMoney(ChangeMoneyEvent e)
     {
         money += e.money;
+        EventBus<MoneyChangedEvent>.Raise(new MoneyChangedEvent(money));
     }
     
-    private void ReceiveCard(CardEvent e)
+    private void ReceiveCard(ProductCardEvent e)
     {
         if (!e.open) return;
         switch (e.card.category)
@@ -102,12 +103,15 @@ public class ShopManager : MonoBehaviour
             case Card.Category.Upgrade:
                 activeUpgrades.Add(e.card);
                 break;
+            case Card.Category.Customer:
+                //Do nothing, this is for the customerManager.
+                break;
         }
         
         EventBus<UpdateShopUIEvent>.Raise(new UpdateShopUIEvent(e.card));
     }
 
-    private void RemoveCard(CardEvent e)
+    private void RemoveCard(ProductCardEvent e)
     {
         if (e.open) return;
         switch (e.card.category)

@@ -45,7 +45,7 @@ public class CardManager : MonoBehaviour
         canvas = FindObjectOfType<Canvas>();
     }
 
-    public void CheckIfCardCanBeActivated(Card card)
+    public void CardAction(Card card)
     {
         //Depending on the card category, different actions will be taken
         //IMPORTANT: Return out of the function if the card can't be activated.
@@ -63,6 +63,7 @@ public class CardManager : MonoBehaviour
                         ShopManager.activeProductsDict[productType].products.Count + 1)
                     {
                         Debug.Log("Product activated");
+                        EventBus<ProductCardEvent>.Raise(new ProductCardEvent(card, true));
                     }
                     else
                     {
@@ -76,8 +77,11 @@ public class CardManager : MonoBehaviour
                     return;
                 }
                 break;
+            
+            //If the card is a customer card...
             case Card.Category.Customer:
                 Debug.Log("Customer card activated");
+                EventBus<CustomerCardEvent>.Raise(new CustomerCardEvent(card, true));
                 break;
             case Card.Category.Employee:
                 Debug.Log("Employee card activated");
@@ -132,8 +136,6 @@ public class CardManager : MonoBehaviour
         {
             hand.Remove(card);
             Destroy(card.gameObject);
-
-            EventBus<CardEvent>.Raise(new CardEvent(card, true));
         }
         //If the card was not in our hand, add it to the hand list and create a new game object to show the card is in our hand
         else

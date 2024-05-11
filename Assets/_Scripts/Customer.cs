@@ -2,16 +2,36 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cards;
+using EventBus;
 
 public class Customer : MonoBehaviour
 {
     public int speed;
     public bool canMove = true;
     public float storeTime = 5f;
-    // Start is called before the first frame update
+    public CustomerBehaviour customerBehaviour;
+
+    public enum CustomerType
+    {
+        Basic,
+        VIP
+    }
+    
+    public CustomerType customerType;
+    
     void Start()
     {
-        
+        switch (customerType)
+        {
+            case CustomerType.Basic:
+                customerBehaviour = new BasicCustomerStrategy();
+                break;
+            case CustomerType.VIP:
+                customerBehaviour = new BasicCustomerStrategy();
+                Debug.Log("VIP customer");
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -29,8 +49,12 @@ public class Customer : MonoBehaviour
         {
             canMove = false;
             StartCoroutine(StoreTime());
+            
+            customerBehaviour.Buy();
         }
     }
+    
+
     
     private IEnumerator StoreTime()
     {

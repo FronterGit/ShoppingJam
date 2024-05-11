@@ -1,29 +1,35 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EventBus;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class CustomerManager : MonoBehaviour
 {
     public GameObject basicCustomerPrefab;
-    public float baseSpawnChance = 1f;
-    public float spawnChance = 1f;
 
     [SerializeField] private GameObject shopObject;
     private List<AdditionalCustomer> additionalCustomers = new List<AdditionalCustomer>();
 
-    private void Update()
+    private void OnEnable()
     {
-        float random = UnityEngine.Random.Range(0f, spawnChance);
-        if (random <= 0.1f)
-        {
-            SpawnCustomer();
-        }
-        else
-        {
-            spawnChance -= 0.1f;
-        }
+        EventBus<StartTurnEvent>.Subscribe(OnStartTurn);
+        EventBus<CustomerCardEvent>.Subscribe(OnCustomerCardActivated);
+    }
+    
+    private void OnDisable()
+    {
+        EventBus<StartTurnEvent>.Unsubscribe(OnStartTurn);
+        EventBus<CustomerCardEvent>.Unsubscribe(OnCustomerCardActivated);
+    }
+
+    public void OnStartTurn(StartTurnEvent e)
+    {
+        //Start the customer spawn coroutine
+        StartCoroutine(SpawnCustomer(e.turn.playTime, e.turn.basicCustomerCount));
+        
+        Debug.Log("Start turn");
     }
     
     private IEnumerator SpawnCustomer(float turnPlayTime, int customers)
@@ -32,16 +38,14 @@ public class CustomerManager : MonoBehaviour
         List<GameObject> customersToSpawn = new List<GameObject>();
         
         //Add the basic customer to the list
-        for(int i = 0; i < customers; i++)
-        {
-            customersToSpawn.Add(basicCustomerPrefab);
-        }
+        for(int i = 0; i < customers; i++) customersToSpawn.Add(basicCustomerPrefab);
+
         
         //Add the additional customers to the list
-        //For each additional customer
+        //For each additional customer...
         foreach (var additionalCustomer in additionalCustomers)
         {
-            //For each time the customer should spawn
+            //For each time the customer should spawn...
             for (int i = 0; i < additionalCustomer.timesToSpawn; i++)
             {
                 //Add the customer to the list
@@ -65,20 +69,40 @@ public class CustomerManager : MonoBehaviour
         //Spawn the customers
         for (int i = 0; i < customerSpawnCount; i++)
         {
+            //Set a random customer to spawn
+            int random = UnityEngine.Random.Range(0, customersToSpawn.Count);
+            GameObject customer = customersToSpawn[random];
+            
+            //Spawn the customer and remove it from the list
+            SpawnCustomer(customer);
+            customersToSpawn.Remove(customer);
+            
+            //Wait for the time between customers
             yield return new WaitForSeconds(timeBetweenCustomers);
-            SpawnCustomer();
         }
+        
+        //End the turn
+        EventBus<EndTurnEvent>.Raise(new EndTurnEvent());
     }
     
-    void SpawnCustomer()
+    void SpawnCustomer(GameObject customer)
     {
-        Instantiate(basicCustomerPrefab, transform.position, Quaternion.identity, shopObject.transform);
-        spawnChance = baseSpawnChance;
+        //Spawn the customer
+        Instantiate(customer, transform.position, Quaternion.identity, shopObject.transform);
     }
     
     public void AddAdditionalCustomer(Customer customer, int timesToSpawn, int turnToSpawn)
     {
+        //Create a new additional customer
         AdditionalCustomer additionalCustomer = new AdditionalCustomer(customer, timesToSpawn, turnToSpawn);
+        
+        //Add the additional customer to the list
+        additionalCustomers.Add(additionalCustomer);
+    }
+    
+    public void OnCustomerCardActivated(CustomerCardEvent e)
+    {
+        Debug.Log("Customer card activated");
     }
 
     public class AdditionalCustomer
