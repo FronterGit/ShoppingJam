@@ -26,6 +26,6 @@ public class VegetarianCustomerStrategy : CustomerBehaviour
         }
         
         //Add the total value to the shop's money
-        EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(totalValue));
+        EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(totalValue, true));
     }
 }
