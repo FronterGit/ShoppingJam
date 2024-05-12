@@ -5,8 +5,9 @@ using Cards;
 
 public class Meat : Card
 {
-    public override void CardAction()
+    public override int AddedGoldFromProducts(Dictionary<string, ShopManager.ProductHolder> activeProductsDict, Customer customer)
     {
-        Debug.Log("Meat card action");
+        //Beef adds 1 gold per customer.
+        return 1;
     }
 }

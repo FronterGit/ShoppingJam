@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cards;
 
-public class GymCustomer : Card
+public class Tomato : Card
 {
+    //Tomato adds 1 gold per customer.
     public override int AddedGoldFromProducts(Dictionary<string, ShopManager.ProductHolder> activeProductsDict, Customer customer)
     {
-        throw new System.NotImplementedException();
+        return 1;
     }
 }

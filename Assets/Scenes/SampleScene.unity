@@ -1988,11 +1988,11 @@ MonoBehaviour:
   customersList: []
   startingProducts:
   - productType: 0
-    amount: 2
-  - productType: 1
     amount: 3
+  - productType: 1
+    amount: 1
   - productType: 2
-    amount: 4
+    amount: 1
 --- !u!4 &674664718
 Transform:
   m_ObjectHideFlags: 0
@@ -4098,6 +4098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicCustomerPrefab: {fileID: 8554143632513836642, guid: 30f7b8d3b62bca640b423b92e5bf3457, type: 3}
   shopObject: {fileID: 1323184715}
+  liveCustomers: []
   customerSpawnPoint: {fileID: 85021345}
   customerGoalPoint: {fileID: 1715213802}
 --- !u!4 &1275444266

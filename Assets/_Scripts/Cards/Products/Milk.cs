@@ -7,9 +7,10 @@ namespace Cards
 {
     public class Milk : Card
     {
-        public override void CardAction()
+        public override int AddedGoldFromProducts(Dictionary<string, ShopManager.ProductHolder> activeProductsDict, Customer customer)
         {
-            Debug.Log("Milk card action");
+            //No effect.
+            return 0;
         }
     }
 }

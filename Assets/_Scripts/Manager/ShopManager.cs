@@ -175,6 +175,10 @@ public class ShopManager : MonoBehaviour
     {
         if (!e.open) return;
         activeUpgrades.Add(e.card);
+        
+        UpgradeCardBeviour upgradeCard = (UpgradeCardBeviour) e.card;
+        upgradeCard.ApplyUpgrade();
+        
         //TODO: Update UI
     }
     

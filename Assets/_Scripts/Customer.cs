@@ -37,6 +37,16 @@ public class Customer : MonoBehaviour
     {
         //Get the active products from the shop manager
         activeProductsDict = ShopManager.activeProductsDict;
+        
+        int goldToAdd = 0;
+        //Loop through all active products and let them modify the active products dictionary
+        foreach (ShopManager.ProductHolder product in activeProductsDict.Values)
+        {
+            foreach (Card card in product.products)
+            {
+                goldToAdd += card.AddedGoldFromProducts(activeProductsDict, this);
+            }
+        }
 
         //Get the active upgrades from the shop manager
         List<Card> activeUpgrades = ShopManager.GetActiveUpgradesFunc?.Invoke();

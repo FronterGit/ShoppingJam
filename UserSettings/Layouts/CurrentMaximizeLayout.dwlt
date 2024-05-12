@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 1
-  controlID: 80558
+  controlID: 82159
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 80559
+  controlID: 82160
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 80560
+  controlID: 82161
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 50}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 80561
+  controlID: 82162
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -261,9 +261,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 6a8c0100
-      m_LastClickedID: 101482
-      m_ExpandedIDs: 7836fbff6237fbff268ffbff86d9fbffaa0afcffc834fcffe835fcff1037fcffc6e2fdffd8ebfdffe2ebfdff7cd9feff90d1fffffcfaffffd66e0000e46e0000066f00004c6f0000c06f0000e66f0000347000003e7000005070000078ae000086ae0000e8ae00004eaf000078af000092af0000e4af0000eeaf00005e2c01001e2e0100282e01005c400100f0400100fe41010008420100b0610100466201008c63010096630100bc8b0100a68d0100
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: ccfcfaff8403fbff2404fbff1407fbff7836fbff6237fbff268ffbff86d9fbffaa0afcffc834fcffe835fcff1037fcffc6e2fdffd8ebfdffe2ebfdff7cd9feff90d1fffffcfaffffd66e0000e46e0000066f00004c6f0000c06f0000e66f0000347000003e7000005070000078ae000086ae0000e8ae00004eaf000078af000092af0000e4af0000eeaf00005e2c01001e2e0100282e01005c400100f0400100fe41010008420100b0610100466201008c63010096630100bc8b0100a68d01004ab10100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -787,9 +787,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.6552571, y: -1.4493717, z: 0.9826914}
+    m_Target: {x: 1.2737601, y: -1.1261828, z: 0.9651533}
     speed: 2
-    m_Value: {x: 0.6552571, y: -1.4493717, z: 0.9826914}
+    m_Value: {x: 1.2737601, y: -1.1261828, z: 0.9651533}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -839,9 +839,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 2.596784
+    m_Target: 4.350601
     speed: 2
-    m_Value: 2.596784
+    m_Value: 4.350601
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1072,7 +1072,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Customers
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 57
   m_LastFolders:
-  - Assets/Prefabs/Customers
+  - Assets/Prefabs
   m_LastFoldersGridSize: 57
   m_LastProjectPath: C:\Users\mathi\Documents\Game Development\Game Jams\mini jam
     1005\Folder 2\ShoppingJam
@@ -1088,8 +1088,8 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 67.80002}
-    m_SelectedIDs: 06ee0000
-    m_LastClickedID: 60934
+    m_SelectedIDs: 3a750000
+    m_LastClickedID: 30010
     m_ExpandedIDs: 00000000ee7200003a75000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1143,8 +1143,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 6a8c0100
-    m_LastClickedInstanceID: 101482
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000de930000a29a00003484000002b50000507d000076c600007a280400d8860000d8a00000e08d000088a900002e8f000092340100b28e000000880000e6860000e4860000869d02003afe000056fe00007e8500009e87000000c3000078dd0000b8b30000bab30000b6b30000a6b30000c2b30000b0b30000a0b30000a8b30000aeb30000b4b30000cab30000b2b30000beb30000acb300009eb30000ccb30000c4b30000a2b30000c6b30000c8b30000107d0000cc710000f4710000c0720000e67a0000ec890000c66f0000f2fe0000f87800008e7d0000f8710000b279000024940000da0300006a9a0000220101002401010082cb0000000000001c63000066ef0000
     m_RenameOverlay:
