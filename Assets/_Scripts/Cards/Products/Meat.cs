@@ -7,7 +7,7 @@ public class Meat : Card
 {
     public override int AddedGoldFromProducts(Dictionary<string, ShopManager.ProductHolder> activeProductsDict, Customer customer)
     {
-        //Beef adds 1 gold per customer.
-        return 1;
+        //No additional effect.
+        return 0;
     }
 }

@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4385098037386254445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_Name
-      value: BBQ Upgrade
+      value: General Size Upgrade
       objectReference: {fileID: 0}
     - target: {fileID: 7245244584665326795, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: typeText
@@ -62,7 +62,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4385098037386254445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -9102701987825331173}
+      addedObject: {fileID: -4612372548494978500}
   m_SourcePrefab: {fileID: 100100000, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
 --- !u!114 &1568453212780495730 stripped
 MonoBehaviour:
@@ -80,7 +80,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4385098037386254445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
   m_PrefabInstance: {fileID: 6472853378576323854}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-9102701987825331173
+--- !u!114 &-4612372548494978500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,15 +89,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7281984923996589411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e3155acd61308349b36d7c65b323ca6, type: 3}
+  m_Script: {fileID: 11500000, guid: c066db878c4496a499c869b6cfc12533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inHand: 0
-  title: BBQ Section
-  description: Add a BBQ section to the store. Customers can buy your products of
-    type meat twice.
+  title: General  Isle Size +1
+  description: Adds 1 more space for your general products.
   rarity: 0
-  category: 3
+  category: 0
   energyCost: 1
   productInfo: {fileID: 0}
   customerInfo: {fileID: 0}

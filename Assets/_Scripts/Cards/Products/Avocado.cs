@@ -5,13 +5,14 @@ using Cards;
 
 public class Avocado : Card
 {
-    public override int AddedGoldFromProducts(Dictionary<string, ShopManager.ProductHolder> activeProductsDict, Customer customer)
+    public override int AddedGoldFromProducts(Dictionary<string, ShopManager.ProductHolder> activeProductsDict,
+        Customer customer)
     {
-        if(customer.customerType == Customer.CustomerType.Vegetarian)
+        if (customer.customerType == Customer.CustomerType.Vegetarian)
         {
-            return 6;
+            return 4;
         }
 
-        return 2;
+        return 0;
     }
 }

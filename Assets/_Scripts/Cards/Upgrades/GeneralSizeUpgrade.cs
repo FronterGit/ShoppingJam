@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cards;
+using EventBus;
 using UnityEngine;
 
 public class GeneralSizeUpgrade : Card, UpgradeCardBeviour
@@ -19,6 +20,10 @@ public class GeneralSizeUpgrade : Card, UpgradeCardBeviour
     
     public void ApplyUpgrade()
     {
-        //No effect.
+        //Upgrade the size of the general product holder in the shop by 1.
+        ShopManager.activeProductsDict["General"].size++;
+        
+        //Raise UI Update event.
+        EventBus<UpdateShopUIEvent>.Raise(new UpdateShopUIEvent(null));
     }
 }
