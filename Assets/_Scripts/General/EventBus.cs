@@ -149,4 +149,12 @@ namespace EventBus
         {
         }
     }
+
+    public class CardFinishedLerpingEvent : Event
+    {
+        public CardFinishedLerpingEvent()
+        {
+        }
+        
+    }
 }
