@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ade05379d0c8e34bba8d3d6774d8f7a, type: 3}
   m_Name: Gym Customer Info
   m_EditorClassIdentifier: 
-  customerName: 
-  timesToSpawn: 0
-  turnsToSpawn: 0
-  customerPrefab: {fileID: 0}
+  customerName: Gym Customer
+  timesToSpawn: 1
+  turnsToSpawn: 1
+  customerPrefab: {fileID: 8554143632513836642, guid: 46fc8ea820df9f74b9ce4ba470adc8eb, type: 3}

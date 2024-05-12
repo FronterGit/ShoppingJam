@@ -903,11 +903,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322480719}
   m_CullTransparentMesh: 1
---- !u!1 &325963796 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5473290080384471864, guid: 1374916bd7f39554590d552a6d9d2645, type: 3}
-  m_PrefabInstance: {fileID: 2183705722391251653}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &325963797 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4574220826104416467, guid: 1374916bd7f39554590d552a6d9d2645, type: 3}
@@ -1903,7 +1898,7 @@ MonoBehaviour:
   productsColumn: {fileID: 1169317644}
   productsRowPrefab: {fileID: 310927287891875062, guid: 7fec9b48ab3cec147b28196987efd9b6, type: 3}
   productRows: []
-  customerPreviewPrefab: {fileID: 325963796}
+  customerPreviewPrefab: {fileID: 5473290080384471864, guid: 1374916bd7f39554590d552a6d9d2645, type: 3}
   customerPreviewColumn: {fileID: 953622410}
 --- !u!1 &906060402
 GameObject:
