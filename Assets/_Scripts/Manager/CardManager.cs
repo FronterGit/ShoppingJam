@@ -75,6 +75,8 @@ public class CardManager : MonoBehaviour {
                         ShopManager.activeProductsDict[productType].products.Count + 1) {
                         Debug.Log("Product activated");
                         EventBus<ProductCardEvent>.Raise(new ProductCardEvent(card, true));
+
+                        if (AudioManager.instance != null) AudioManager.instance.PlaySound("card_interact_2");
                     }
                     else {
                         Debug.Log(
@@ -94,11 +96,13 @@ public class CardManager : MonoBehaviour {
             case Card.Category.Customer:
                 Debug.Log("Customer card activated");
                 EventBus<CustomerCardEvent>.Raise(new CustomerCardEvent(card, true));
+                if (AudioManager.instance != null) AudioManager.instance.PlaySound("card_interact_2");
                 break;
             case Card.Category.Employee:
                 Debug.Log("Employee card activated");
                 break;
             case Card.Category.Upgrade:
+                if (AudioManager.instance != null) AudioManager.instance.PlaySound("card_interact_2");
                 Debug.Log("Upgrade card activated");
                 EventBus<UpgradeCardEvent>.Raise(new UpgradeCardEvent(card, true));
                 break;
@@ -116,6 +120,8 @@ public class CardManager : MonoBehaviour {
         foreach (var pickingCards in cardsToPick) {
             Destroy(pickingCards.gameObject);
         }
+
+        if (AudioManager.instance != null) AudioManager.instance.PlaySound("card_interact_1");
 
         cardsToPick.Clear();
     }
@@ -260,9 +266,10 @@ public class CardManager : MonoBehaviour {
             SpawnCardsToPick(card, startPosition);
         }
 
-
+        if (AudioManager.instance != null) AudioManager.instance.PlaySound("shuffle_sound_1");
         EventBus<CardFinishedLerpingEvent>.Raise(new CardFinishedLerpingEvent());
         EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(-e.cardPack.cardPackValue, false));
+        
     }
 
     public void SpawnCardsToPick(Card card, Vector3 toPosition) {

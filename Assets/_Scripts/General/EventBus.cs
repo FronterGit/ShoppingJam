@@ -159,4 +159,14 @@ namespace EventBus {
         }
         
     }
+    
+    public class RemoveCustomerEvent : Event
+    {
+        public GameObject customer;
+        
+        public RemoveCustomerEvent(GameObject customer)
+        {
+            this.customer = customer;    
+        }
+    }
 }

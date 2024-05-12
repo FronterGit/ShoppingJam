@@ -13,6 +13,10 @@ public class CustomerManager : MonoBehaviour
     private List<AdditionalCustomer> additionalCustomers = new List<AdditionalCustomer>();
     
     public static List<GameObject> customersToSpawn = new List<GameObject>();
+    public List<GameObject> liveCustomers = new List<GameObject>();
+    
+    [SerializeField] private Transform customerSpawnPoint;
+    [SerializeField] private Transform customerGoalPoint;
 
     private void OnEnable()
     {
@@ -20,6 +24,7 @@ public class CustomerManager : MonoBehaviour
         EventBus<CustomerCardEvent>.Subscribe(OnCustomerCardActivated);
         EventBus<RequestNewCustomersListEvent>.Subscribe(SetCustomersToSpawn);
         EventBus<EndTurnEvent>.Subscribe(DecrementAdditionalCustomerTurnsToSpawn);
+        EventBus<RemoveCustomerEvent>.Subscribe(RemoveLiveCustomer);
     }
     
     private void OnDisable()
@@ -28,6 +33,7 @@ public class CustomerManager : MonoBehaviour
         EventBus<CustomerCardEvent>.Unsubscribe(OnCustomerCardActivated);
         EventBus<RequestNewCustomersListEvent>.Unsubscribe(SetCustomersToSpawn);
         EventBus<EndTurnEvent>.Unsubscribe(DecrementAdditionalCustomerTurnsToSpawn);
+        EventBus<RemoveCustomerEvent>.Unsubscribe(RemoveLiveCustomer);
     }
 
     private void Start()
@@ -88,18 +94,26 @@ public class CustomerManager : MonoBehaviour
             SpawnCustomer(customer);
             customersToSpawn.Remove(customer);
             
+            liveCustomers.Add(customer);
+            
             //Wait for the time between customers
             yield return new WaitForSeconds(timeBetweenCustomers);
         }
-        
-        //End the turn
-        EventBus<EndTurnEvent>.Raise(new EndTurnEvent());
+    }
+    
+    public void RemoveLiveCustomer(RemoveCustomerEvent e)
+    {
+        liveCustomers.Remove(e.customer);
+
+        if (liveCustomers.Count == 0) EventBus<EndTurnEvent>.Raise(new EndTurnEvent());
     }
     
     void SpawnCustomer(GameObject customer)
     {
         //Spawn the customer
-        Instantiate(customer, transform.position, Quaternion.identity, shopObject.transform);
+        Customer customerToSpawn = Instantiate(customer, customerSpawnPoint.position, Quaternion.identity, shopObject.transform).GetComponent<Customer>();
+        customerToSpawn.goalPoint = customerGoalPoint.position;
+        
     }
     
     public void AddAdditionalCustomer(Customer customer, int timesToSpawn, int turnToSpawn)
