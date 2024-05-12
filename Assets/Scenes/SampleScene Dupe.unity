@@ -351,9 +351,13 @@ MonoBehaviour:
   - turnIndex: 0
     playTime: 15
     basicCustomerCount: 3
+    shouldSpawnManager: 0
+    expectedRevenue: 0
   - turnIndex: 1
     playTime: 15
     basicCustomerCount: 4
+    shouldSpawnManager: 0
+    expectedRevenue: 0
 --- !u!1 &81904484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,6 +1609,7 @@ MonoBehaviour:
   money: 10
   energy: 3
   maxEnergy: 3
+  revenueBeforeManagerVisit: 0
   customersList: []
   startingProducts:
   - productType: 0
@@ -3511,6 +3516,7 @@ MonoBehaviour:
   hand: []
   cardSpacing: 50
   cardHeight: 0
+  maxHandSize: 5
   cardPackOpeningParent: {fileID: 1276534858}
   cardHandParent: {fileID: 1365544358}
   cardPackAnimationMoveTime: 0.1
@@ -4746,6 +4752,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842910645}
   m_CullTransparentMesh: 1
+--- !u!1 &1899061108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1899061109}
+  - component: {fileID: 1899061110}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1899061109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899061108}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1930121954}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1899061110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899061108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7648d52e2ec0e743ae8521494c96fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: CardPackOpen
+    clip: {fileID: 8300000, guid: 0d3144ca87e7c6f42954301598f79c11, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
 --- !u!1 &1924679481
 GameObject:
   m_ObjectHideFlags: 0
@@ -4922,6 +4978,7 @@ Transform:
   - {fileID: 1275444266}
   - {fileID: 1446716370}
   - {fileID: 57815184}
+  - {fileID: 1899061109}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1976122626

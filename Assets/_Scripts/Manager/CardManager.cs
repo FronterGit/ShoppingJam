@@ -66,7 +66,8 @@ public class CardManager : MonoBehaviour
     {
         //IMPORTANT: Return out of the function if the card can't be activated.
         if(ShopManager.GetEnergyFunc?.Invoke() < card.energyCost) return;
-        
+
+
         //Depending on the card category, different actions will be taken
         switch (card.category)
         {
@@ -83,6 +84,8 @@ public class CardManager : MonoBehaviour
                     {
                         Debug.Log("Product activated");
                         EventBus<ProductCardEvent>.Raise(new ProductCardEvent(card, true));
+
+                        if (AudioManager.instance != null) AudioManager.instance.PlaySound("card_interact_2");
                     }
                     else
                     {
@@ -101,11 +104,13 @@ public class CardManager : MonoBehaviour
             case Card.Category.Customer:
                 Debug.Log("Customer card activated");
                 EventBus<CustomerCardEvent>.Raise(new CustomerCardEvent(card, true));
+                if (AudioManager.instance != null) AudioManager.instance.PlaySound("card_interact_2");
                 break;
             case Card.Category.Employee:
                 Debug.Log("Employee card activated");
                 break;
             case Card.Category.Upgrade:
+                if (AudioManager.instance != null) AudioManager.instance.PlaySound("card_interact_2");
                 Debug.Log("Upgrade card activated");
                 break;
         }
@@ -124,7 +129,8 @@ public class CardManager : MonoBehaviour
         {
             Destroy(pickingCards.gameObject);
         }
-        
+
+        if (AudioManager.instance != null) AudioManager.instance.PlaySound("card_interact_1");
         cardsToPick.Clear();
     }
     
@@ -181,9 +187,6 @@ public class CardManager : MonoBehaviour
         Vector3 startPosition = new Vector3(canvas.pixelRect.width / 2, canvas.pixelRect.height / 2, 0);
         float cardSpacing = 300;
         startPosition = new Vector3(startPosition.x - (cardCount * cardSpacing), startPosition.y, startPosition.z);
-        float cardRowWidth = startPosition.x + (cardCount * cardSpacing);
-        //get the width of a card
-        
 
         foreach (var card in e.cardPack.cards)
         {
@@ -197,6 +200,7 @@ public class CardManager : MonoBehaviour
         }
         EventBus<CardFinishedLerpingEvent>.Raise(new CardFinishedLerpingEvent());
         EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(-e.cardPack.cardPackValue, false));
+        if (AudioManager.instance != null) AudioManager.instance.PlaySound("shuffle_sound_1");
     }
     
     public void SpawnCardsToPick(Card card, Vector3 toPosition)
