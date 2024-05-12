@@ -91,6 +91,35 @@ namespace EventBus
         }
     }
     
+    public class ChangeEnergyEvent : Event
+    {
+        public int energy;
+        public ChangeEnergyEvent(int energy)
+        {
+            this.energy = energy;
+        }
+    }
+    
+    public class EnergyChangedEvent : Event
+    {
+        public int energy;
+        public int maxEnergy;
+        public EnergyChangedEvent(int energy, int maxEnergy)
+        {
+            this.energy = energy;
+            this.maxEnergy = maxEnergy;
+        }
+    }
+    
+    public class ChangeMaxEnergyEvent : Event
+    {
+        public int energy;
+        public ChangeMaxEnergyEvent(int energy)
+        {
+            this.energy = energy;
+        }
+    }
+    
     public class StartTurnEvent : Event
     {
         public Turn turn;

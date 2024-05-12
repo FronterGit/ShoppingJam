@@ -8,6 +8,7 @@ TagManager:
   - Customer
   - Canvas
   - HandParent
+  - Death
   layers:
   - Default
   - TransparentFX

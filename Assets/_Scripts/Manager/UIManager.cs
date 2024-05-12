@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 {
     [Header("Top bar")]
     [SerializeField] TMPro.TextMeshProUGUI moneyText;
+    [SerializeField] TMPro.TextMeshProUGUI energyText;
 
     [SerializeField] private TMPro.TextMeshProUGUI turnText;
     
@@ -34,26 +35,41 @@ public class UIManager : MonoBehaviour
     {
         EventBus<MoneyChangedEvent>.Subscribe(OnMoneyChanged);
         EventBus<CardPackEvent>.Subscribe(OnCardPackOpen);
-        EventBus<StartTurnEvent>.Subscribe(IncreaseTurnIndex);
+        EventBus<EndTurnEvent>.Subscribe(OnTurnChanged);
+        EventBus<EnergyChangedEvent>.Subscribe(OnEnergyChanged);
     }
     
     private void OnDisable()
     {
         EventBus<MoneyChangedEvent>.Unsubscribe(OnMoneyChanged);
         EventBus<CardPackEvent>.Unsubscribe(OnCardPackOpen);
-        EventBus<StartTurnEvent>.Unsubscribe(IncreaseTurnIndex);
+        EventBus<EndTurnEvent>.Unsubscribe(OnTurnChanged);
+        EventBus<EnergyChangedEvent>.Unsubscribe(OnEnergyChanged);
     }
 
     private void Start()
     {
         mainCamera = Camera.main;
+        
+        int turnIndex = TurnManager.turnIndex + 1;
+        turnText.text = turnIndex.ToString();
+        
+        
     }
 
     void OnMoneyChanged(MoneyChangedEvent e)
     {
         moneyText.text = e.money.ToString();
     }
-    
+
+    void OnEnergyChanged(EnergyChangedEvent e)
+    {
+        int energy = e.energy;
+        int maxEnergy = e.maxEnergy;
+        
+        energyText.text = energy + "/" + maxEnergy;
+    }
+
     public void ToggleShop()
     {
         shopOpen = !shopOpen;
@@ -97,8 +113,9 @@ public class UIManager : MonoBehaviour
         }
     }
     
-    public void IncreaseTurnIndex(StartTurnEvent e)
+    public void OnTurnChanged(EndTurnEvent e)
     {
-        turnText.text = e.turn.turnIndex.ToString();
+        int turnIndex = TurnManager.turnIndex + 1;
+        turnText.text = turnIndex.ToString();
     }
 }

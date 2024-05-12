@@ -32,8 +32,11 @@ namespace Cards
             Meat,
             Vegetable
         }
+        public string title;
+        public string description;
         public Rarity rarity;
         public Category category;
+        public int energyCost;
         public ProductInfo productInfo;
         public CustomerInfo customerInfo;
 
