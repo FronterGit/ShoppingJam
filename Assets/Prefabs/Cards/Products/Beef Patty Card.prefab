@@ -48,14 +48,82 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1793250627774703644, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: eb3082eb6f64830459837b7d59ce4801, type: 2}
+    - target: {fileID: 1793250627774703644, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7291407783313481107, guid: eb3082eb6f64830459837b7d59ce4801, type: 2}
+    - target: {fileID: 1793250627774703644, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4385098037386254445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_Name
       value: Beef Patty Card
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633630922280162461, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633630922280162461, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: eb3082eb6f64830459837b7d59ce4801, type: 2}
+    - target: {fileID: 4633630922280162461, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633630922280162461, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7291407783313481107, guid: eb3082eb6f64830459837b7d59ce4801, type: 2}
+    - target: {fileID: 4633630922280162461, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5124579908531515969, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: deda27f0b1856644b94b39b50797cc21, type: 3}
+    - target: {fileID: 5417384365485857005, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: eb3082eb6f64830459837b7d59ce4801, type: 2}
+    - target: {fileID: 5417384365485857005, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7291407783313481107, guid: eb3082eb6f64830459837b7d59ce4801, type: 2}
+    - target: {fileID: 5417384365485857005, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8215769825973845951, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: eb3082eb6f64830459837b7d59ce4801, type: 2}
+    - target: {fileID: 8215769825973845951, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7291407783313481107, guid: eb3082eb6f64830459837b7d59ce4801, type: 2}
+    - target: {fileID: 8215769825973845951, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349102350992101178, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: eb3082eb6f64830459837b7d59ce4801, type: 2}
+    - target: {fileID: 8349102350992101178, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7291407783313481107, guid: eb3082eb6f64830459837b7d59ce4801, type: 2}
+    - target: {fileID: 8349102350992101178, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -83,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inHand: 0
   title: Beef Patty
-  description: Worth $1. No Additional effect.
+  description: Worth 1$. Stackable (up to 3). Can be Combined
   rarity: 0
   category: 0
   energyCost: 1

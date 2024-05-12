@@ -3513,7 +3513,8 @@ MonoBehaviour:
   cardHeight: 0
   cardPackOpeningParent: {fileID: 1276534858}
   cardHandParent: {fileID: 1365544358}
-  moveTime: 0.5
+  cardPackAnimationMoveTime: 0.1
+  toPositions: []
 --- !u!1 &1462975256
 GameObject:
   m_ObjectHideFlags: 0

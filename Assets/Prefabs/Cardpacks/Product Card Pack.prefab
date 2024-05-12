@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: cards.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: cards.Array.data[0]
@@ -108,6 +108,10 @@ PrefabInstance:
       propertyPath: cards.Array.data[2]
       value: 
       objectReference: {fileID: -3623458383939144197, guid: 40a1f6d7b8ec928438d23a7ba6d7db01, type: 3}
+    - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
+      propertyPath: cards.Array.data[3]
+      value: 
+      objectReference: {fileID: -3623458383939144197, guid: 3c9ce688b42bfd444a980fc69cc392e2, type: 3}
     - target: {fileID: 4592960538762821319, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: m_Sprite
       value: 
