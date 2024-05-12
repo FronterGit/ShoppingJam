@@ -23,10 +23,18 @@ public class Customer : MonoBehaviour
     
     void Start()
     {
+        //Get the active products from the shop manager
         activeProductsDict = ShopManager.activeProductsDict;
         
+        //Get the active upgrades from the shop manager
+        List<Card> activeUpgrades = ShopManager.GetActiveUpgradesFunc?.Invoke();
         
-        
+        //Loop over all active upgrades and let them modify the active products dictionary
+        foreach (UpgradeCardBeviour upgradeCard in activeUpgrades)
+        {
+            Dictionary<string, ShopManager.ProductHolder> newActiveProductsDict = upgradeCard.GetNewActiveProductsDict(activeProductsDict);
+            activeProductsDict = newActiveProductsDict;
+        }
         
         switch (customerType)
         {

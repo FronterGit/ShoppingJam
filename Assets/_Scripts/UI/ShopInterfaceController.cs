@@ -18,9 +18,16 @@ public class ShopInterfaceController : MonoBehaviour
     [SerializeField] private List<GameObject> productRows;
     private Dictionary<string, GameObject> productRowsDict = new Dictionary<string, GameObject>();
     
+    //Customer preview UI variables
     [SerializeField] public GameObject customerPreviewPrefab;
     [SerializeField] public GameObject customerPreviewColumn;
     [SerializeField] public TMPro.TextMeshProUGUI customerPreviewTurnCountValue;
+    
+    //Revenue UI variables
+    [SerializeField] public TMPro.TextMeshProUGUI revenueValue;
+    [SerializeField] public TMPro.TextMeshProUGUI regionalTurn;
+    [SerializeField] public TMPro.TextMeshProUGUI regionalExpected;
+    [SerializeField] public TMPro.TextMeshProUGUI totalTurns;
 
     private void OnEnable()
     {
@@ -61,6 +68,7 @@ public class ShopInterfaceController : MonoBehaviour
         }
         shopMenus[currentMenuIndex].SetActive(true);
         EventBus<UpdateCustomerPreviewEvent>.Raise(new UpdateCustomerPreviewEvent());
+        EventBus<UpdateShopUIEvent>.Raise(new UpdateShopUIEvent(null));
     }
     
     private void UpdateShopInterface(UpdateShopUIEvent e)
@@ -92,7 +100,29 @@ public class ShopInterfaceController : MonoBehaviour
                 //Update the products in the row
                 productsRow.UpdateProducts();
             }
-
+            
+            //Update the revenue values
+            
+            //Set the regional turn value
+            revenueValue.text = ShopManager.GetRevenueFunc?.Invoke().ToString();
+            
+            //See when the regional manager is coming and how much revenue is expected
+            List<Turn> turns = TurnManager.GetTurns();
+            int currentTurn = TurnManager.turnIndex;
+            for (int i = currentTurn; i < turns.Count; i++)
+            {
+                if (turns[i].shouldSpawnManager)
+                {
+                    int turn = i + 1;
+                    regionalTurn.text = turn.ToString();
+                    regionalExpected.text = turns[i].expectedRevenue.ToString();
+                    break;
+                }
+            }
+            
+            //Set the total turns
+            totalTurns.text = turns.Count.ToString();
+ 
             //We are done updating the UI, so we can return
             return;
         }
