@@ -22,7 +22,8 @@ public class Customer : MonoBehaviour
     public enum CustomerType
     {
         Basic,
-        Vegetarian
+        Vegetarian,
+        GrillDaddy
     }
     
     public CustomerType customerType;
@@ -66,6 +67,9 @@ public class Customer : MonoBehaviour
                 break;
             case CustomerType.Vegetarian:
                 customerBehaviour = new VegetarianCustomerStrategy(activeProductsDict);
+                break;
+            case CustomerType.GrillDaddy:
+                customerBehaviour = new GrillDaddyStrategy(activeProductsDict);
                 break;
         }
     }

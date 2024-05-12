@@ -27,7 +27,7 @@ namespace Cards
 
         public enum ProductType
         {
-            Dairy,
+            General,
             Meat,
             Vegetable
         }

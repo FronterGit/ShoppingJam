@@ -87,7 +87,7 @@ PrefabInstance:
     - target: {fileID: 5124579908531515969, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: deda27f0b1856644b94b39b50797cc21, type: 3}
+      objectReference: {fileID: 21300000, guid: 7ff701c9ffe8a854fbee532dfdae4df7, type: 3}
     - target: {fileID: 5417384365485857005, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -173,7 +173,7 @@ MonoBehaviour:
   rarity: 2
   category: 0
   energyCost: 1
-  productInfo: {fileID: 11400000, guid: b06de846ba2885f46b4657a1487bb1a1, type: 2}
+  productInfo: {fileID: 11400000, guid: 0c7a6eab59e587a4d88188b59789e954, type: 2}
   customerInfo: {fileID: 0}
 --- !u!114 &-1160511510493035731
 MonoBehaviour:

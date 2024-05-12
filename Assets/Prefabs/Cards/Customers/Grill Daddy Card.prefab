@@ -50,8 +50,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4385098037386254445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_Name
-      value: Vegetarian Customer
+      value: Grill Daddy Card
       objectReference: {fileID: 0}
+    - target: {fileID: 5124579908531515969, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5124579908531515969, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 78e5485e023323445a456fac4e90420c, type: 3}
+    - target: {fileID: 7245244584665326795, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: typeText
+      value: 
+      objectReference: {fileID: 1568453212780495730}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -60,6 +72,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: -1613684203152704282}
   m_SourcePrefab: {fileID: 100100000, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+--- !u!114 &1568453212780495730 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5481006337722717820, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+  m_PrefabInstance: {fileID: 6472853378576323854}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7281984923996589411 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4385098037386254445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}

@@ -45,6 +45,7 @@ public class ShopManager : MonoBehaviour
         EventBus<ProductCardEvent>.Subscribe(RemoveCard);
         EventBus<ChangeMoneyEvent>.Subscribe(OnChangeMoney);
         EventBus<ChangeEnergyEvent>.Subscribe(OnChangeEnergy);
+        EventBus<UpgradeCardEvent>.Subscribe(ReceiveUpgrade);
     }
     
     private void OnDisable()
@@ -61,6 +62,7 @@ public class ShopManager : MonoBehaviour
         EventBus<ProductCardEvent>.Unsubscribe(RemoveCard);
         EventBus<ChangeMoneyEvent>.Unsubscribe(OnChangeMoney);
         EventBus<ChangeEnergyEvent>.Unsubscribe(OnChangeEnergy);
+        EventBus<UpgradeCardEvent>.Unsubscribe(ReceiveUpgrade);
     }
 
     void Start()

@@ -241,6 +241,12 @@ public class CardManager : MonoBehaviour {
             Debug.Log("random: " + random);
 
             if (random < commonChance) {
+                //If we have no common cards, reroll
+                if (common.Count == 0) {
+                    i--;
+                    continue;
+                }
+                
                 // cardPack.cards[i].rarity = Card.Rarity.Common;
                 card = common[UnityEngine.Random.Range(0, common.Count)];
                 cardPack.gameCards.Add(card);
@@ -248,6 +254,12 @@ public class CardManager : MonoBehaviour {
                 Debug.Log("Common card added to gameCards");
             }
             else if (random > commonChance && random < commonChance + rareChance) {
+                //If we have no rare cards, reroll
+                if (rare.Count == 0) {
+                    i--;
+                    continue;
+                }
+                
                 // cardPack.cards[i].rarity = Card.Rarity.Rare;
                 card = rare[UnityEngine.Random.Range(0, rare.Count)];
                 cardPack.gameCards.Add(card);
@@ -255,6 +267,12 @@ public class CardManager : MonoBehaviour {
                 Debug.Log("Rare card added to gameCards");
             }
             else {
+                //If we have no legendary cards, reroll
+                if (legendary.Count == 0) {
+                    i--;
+                    continue;
+                }
+                
                 // cardPack.cards[i].rarity = Card.Rarity.Legendary;
                 card = legendary[UnityEngine.Random.Range(0, legendary.Count)];
                 cardPack.gameCards.Add(card);

@@ -15,4 +15,4 @@ MonoBehaviour:
   customerName: Grill Daddy
   timesToSpawn: 1
   turnsToSpawn: 1
-  customerPrefab: {fileID: 8554143632513836642, guid: 46fc8ea820df9f74b9ce4ba470adc8eb, type: 3}
+  customerPrefab: {fileID: 8554143632513836642, guid: d8eef2f23abea7746872293536870ff6, type: 3}
