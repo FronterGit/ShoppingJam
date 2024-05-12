@@ -349,9 +349,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turns:
   - turnIndex: 0
-    playTime: 1
-    basicCustomerCount: 1
-    shouldSpawnManager: 1
+    playTime: 10
+    basicCustomerCount: 5
+    shouldSpawnManager: 0
     expectedRevenue: 1
   - turnIndex: 1
     playTime: 1
@@ -428,6 +428,37 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &85021344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 85021345}
+  m_Layer: 0
+  m_Name: CustomerSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &85021345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85021344}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.29, y: -5.38, z: 11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 122888773}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &99354165
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +567,8 @@ Transform:
   - {fileID: 1323184719}
   - {fileID: 726494873}
   - {fileID: 1745930428}
+  - {fileID: 85021345}
+  - {fileID: 1715213802}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &158094083
@@ -2876,7 +2909,7 @@ Transform:
   m_GameObject: {fileID: 1006176593}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.4699993, y: 0, z: 10}
+  m_LocalPosition: {x: -3.71, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4065,6 +4098,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicCustomerPrefab: {fileID: 8554143632513836642, guid: 30f7b8d3b62bca640b423b92e5bf3457, type: 3}
   shopObject: {fileID: 1323184715}
+  customerSpawnPoint: {fileID: 85021345}
+  customerGoalPoint: {fileID: 1715213802}
 --- !u!4 &1275444266
 Transform:
   m_ObjectHideFlags: 0
@@ -4074,7 +4109,7 @@ Transform:
   m_GameObject: {fileID: 1275444264}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.169999, y: 0, z: 11}
+  m_LocalPosition: {x: -14.169999, y: -8.19, z: 11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4766,6 +4801,9 @@ MonoBehaviour:
   cardHandParent: {fileID: 1365544358}
   cardPackAnimationMoveTime: 0.1
   toPositions: []
+  commonChance: 0.75
+  rareChance: 0.2
+  legendaryChance: 0.05
 --- !u!1 &1462975256
 GameObject:
   m_ObjectHideFlags: 0
@@ -6013,6 +6051,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714896850}
   m_CullTransparentMesh: 1
+--- !u!1 &1715213801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1715213802}
+  m_Layer: 0
+  m_Name: ShopEntryPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1715213802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715213801}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.26, y: -1.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 122888773}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1745930427
 GameObject:
   m_ObjectHideFlags: 0
