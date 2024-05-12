@@ -9,9 +9,15 @@ public class Customer : MonoBehaviour
 {
     public int speed;
     public bool canMove = true;
+    public bool reachedGoal = false;
     public float storeTime = 5f;
     public CustomerBehaviour customerBehaviour;
     public Dictionary<string, ShopManager.ProductHolder> activeProductsDict;
+    private SpriteRenderer spriteRenderer;
+    public Sprite backSprite;
+    
+    private Vector3 spawnPoint;
+    public Vector3 goalPoint;
 
     public enum CustomerType
     {
@@ -23,19 +29,26 @@ public class Customer : MonoBehaviour
     
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spawnPoint = transform.position;
+    }
+
+    private void OnEnterShop()
+    {
         //Get the active products from the shop manager
         activeProductsDict = ShopManager.activeProductsDict;
-        
+
         //Get the active upgrades from the shop manager
         List<Card> activeUpgrades = ShopManager.GetActiveUpgradesFunc?.Invoke();
-        
+
         //Loop over all active upgrades and let them modify the active products dictionary
         foreach (UpgradeCardBeviour upgradeCard in activeUpgrades)
         {
-            Dictionary<string, ShopManager.ProductHolder> newActiveProductsDict = upgradeCard.GetNewActiveProductsDict(activeProductsDict);
+            Dictionary<string, ShopManager.ProductHolder> newActiveProductsDict =
+                upgradeCard.GetNewActiveProductsDict(activeProductsDict);
             activeProductsDict = newActiveProductsDict;
         }
-        
+
         switch (customerType)
         {
             case CustomerType.Basic:
@@ -45,15 +58,23 @@ public class Customer : MonoBehaviour
                 customerBehaviour = new VegetarianCustomerStrategy(activeProductsDict);
                 break;
         }
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (canMove)
+        if (canMove && !reachedGoal)
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, goalPoint, speed * Time.deltaTime);
+        }
+        else if(canMove && reachedGoal)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, spawnPoint, speed * Time.deltaTime);
+        }
+        
+        if(reachedGoal && transform.position == spawnPoint)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -64,11 +85,11 @@ public class Customer : MonoBehaviour
             canMove = false;
             StartCoroutine(StoreTime());
             
+            OnEnterShop();
             customerBehaviour.Buy();
-        }
-        else if (other.CompareTag("Death"))
-        {
-            Destroy(gameObject);
+            
+            reachedGoal = true;
+            spriteRenderer.sprite = null;
         }
     }
     
@@ -78,5 +99,11 @@ public class Customer : MonoBehaviour
     {
         yield return new WaitForSeconds(storeTime);
         canMove = true;
+        spriteRenderer.sprite = backSprite;
+    }
+
+    private void OnDestroy()
+    {
+        EventBus<RemoveCustomerEvent>.Raise(new RemoveCustomerEvent(this.gameObject));
     }
 }
