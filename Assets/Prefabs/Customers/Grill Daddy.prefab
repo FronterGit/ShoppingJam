@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8370808551684596106}
   - component: {fileID: -2229219795244010932}
   m_Layer: 0
-  m_Name: Vegetarian Customer
+  m_Name: Grill Daddy
   m_TagString: Customer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5e489a35027e4c347b710802cb9ed081, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da82bc362d339cf4abaaacd19e285d64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -142,7 +142,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.39, y: 0.62}
+    oldSize: {x: 0.5, y: 0.57}
     newSize: {x: 2.71, y: 8.03}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -20,6 +20,8 @@ public class GeneralSizeUpgrade : Card, UpgradeCardBeviour
     
     public void ApplyUpgrade()
     {
+        Debug.Log("General Size Upgrade applied.");
+        
         //Upgrade the size of the general product holder in the shop by 1.
         ShopManager.activeProductsDict["General"].size++;
         
