@@ -166,19 +166,25 @@ public class CardManager : MonoBehaviour {
         int cardCount = e.cardPack.cardCount;
         //get the middle of the canvas
 
-        Vector3 startPosition = new Vector3(canvas.pixelRect.width / 2, canvas.pixelRect.height / 2, 0);
-        // float cardSpacing = 300;
-        
+        // Vector3 startPosition = new Vector3(canvas.pixelRect.width / 2, canvas.pixelRect.height / 2, 0);
+        float cardSpacing = 300;
+
         // calculate card spacing
-        int cardsOnScreen = e.cardPack.cardCount;
-        float cardWidth = e.cardPack.cards[0].gameObject.GetComponent<RectTransform>().rect.width;
-        float totalCardSizes = cardsOnScreen * cardWidth;
-        float screenSize = canvas.pixelRect.width;
-        float remainingSpace = screenSize - totalCardSizes;
-        cardSpacing = remainingSpace / (cardsOnScreen + 1); 
-        
-        startPosition = new Vector3(startPosition.x - (cardCount * cardSpacing), startPosition.y, startPosition.z);
-        float cardRowWidth = startPosition.x + (cardCount * cardSpacing);
+        // int cardsOnScreen = e.cardPack.cardCount;
+        // float cardWidth = e.cardPack.cards[0].gameObject.GetComponent<RectTransform>().rect.width;
+        // float totalCardSizes = cardsOnScreen * cardWidth;
+        // float screenSize = canvas.pixelRect.width;
+        // float remainingSpace = screenSize - totalCardSizes;
+        // cardSpacing = remainingSpace / (cardsOnScreen + 1); 
+        //
+        // if(cardSpacing < 0) {
+        //     cardSpacing = 0;
+        // }
+
+        Debug.Log("Card spacing: " + cardSpacing);
+
+        // startPosition = new Vector3(startPosition.x - (cardCount * cardSpacing), startPosition.y, startPosition.z);
+        // float cardRowWidth = startPosition.x + (cardCount * cardSpacing);
         //get the width of a card
 
 
@@ -201,7 +207,7 @@ public class CardManager : MonoBehaviour {
         List<Card> legendary = new();
 
         foreach (var card in cardPack.cards) {
-            startPosition = new Vector3(startPosition.x + cardSpacing * 1.5f, startPosition.y, startPosition.z);
+            // startPosition = new Vector3(startPosition.x + cardSpacing * 1.5f, startPosition.y, startPosition.z);
 
             switch (card.rarity) {
                 case Card.Rarity.Common:
@@ -216,11 +222,16 @@ public class CardManager : MonoBehaviour {
             }
         }
 
+        float offset = cardPack.cards[0].GetComponent<RectTransform>().rect.width;
+
         for (int i = 0; i < cardPack.cardCount; i++) {
             float random = UnityEngine.Random.Range(0f, 1f);
 
+            Vector3 startPosition = new Vector3(0 + (offset / 2f) + 10, canvas.pixelRect.height / 2, 0);
+            startPosition = new Vector3(startPosition.x + cardSpacing * i, startPosition.y, startPosition.z);
+
             Card card;
-        
+
             Debug.Log("random: " + random);
 
             if (random < commonChance) {
