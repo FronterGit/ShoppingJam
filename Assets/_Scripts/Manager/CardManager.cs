@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cards;
 using UnityEngine;
 using EventBus;
+using UnityEngine.UIElements;
 
 public class CardManager : MonoBehaviour
 {
@@ -18,14 +19,23 @@ public class CardManager : MonoBehaviour
     [SerializeField] private Transform cardHandParent;
     private Canvas canvas;
 
+
+    [SerializeField] private float cardPackAnimationMoveTime = 0.1f;
+    private GameObject cardPack;
+    private List<Card> cardsToLerp = new List<Card>();
+    public List<Vector3> toPositions = new List<Vector3>();
+
+
     private void OnEnable()
     {
         EventBus<CardPackEvent>.Subscribe(OpenPack);
+        EventBus<CardFinishedLerpingEvent>.Subscribe(LerpCard);
     }
     
     private void OnDisable()
     {
         EventBus<CardPackEvent>.Unsubscribe(OpenPack);
+        EventBus<CardFinishedLerpingEvent>.Unsubscribe(LerpCard);
     }
 
     void Awake()
@@ -148,18 +158,70 @@ public class CardManager : MonoBehaviour
     private void OpenPack(CardPackEvent e)
     {
         if(!e.open) return;
+
+        //get the number of cards in the pack
+        int cardCount = e.cardPack.cards.Count;
+        //get the middle of the canvas
+
+        Vector3 startPosition = new Vector3(canvas.pixelRect.width / 2, canvas.pixelRect.height / 2, 0);
+        float cardSpacing = 300;
+        startPosition = new Vector3(startPosition.x - (cardCount * cardSpacing), startPosition.y, startPosition.z);
+        float cardRowWidth = startPosition.x + (cardCount * cardSpacing);
+        //get the width of a card
+        
+        
+
+
         foreach (var card in e.cardPack.cards)
         {
-            SpawnCardsToPick(card);
+
+            //place all cards along the cardRowWidth in equal spacing
+            startPosition = new Vector3(startPosition.x + cardSpacing * 1.5f, startPosition.y, startPosition.z);
+
+            //spawn a new card offscreen and lerp it to the position
+            SpawnCardsToPick(card, startPosition);
+
         }
+        EventBus<CardFinishedLerpingEvent>.Raise(new CardFinishedLerpingEvent());
         EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(-e.cardPack.cardPackValue, false));
     }
     
-    public void SpawnCardsToPick(Card card)
+    public void SpawnCardsToPick(Card card, Vector3 toPosition)
     {
-        GameObject newCard = Instantiate(card.gameObject, new Vector3(0, 0, 0), Quaternion.identity, cardPackOpeningParent);
+
+        cardPack = GameObject.Find("Product Card Pack");
+        Vector3 cardPackPosition = cardPack.transform.position;
+        GameObject newCard = Instantiate(card.gameObject, cardPackPosition, Quaternion.identity, cardPackOpeningParent);
+
+        //throw the instantiated card in cardsToLerp
+        cardsToLerp.Add(newCard.GetComponent<Card>());
+        toPositions.Add(toPosition);
+
+
         Card newCardScript = newCard.GetComponent<Card>();
         cardsToPick.Add(newCardScript);
+    }
+
+    public void LerpCard(CardFinishedLerpingEvent e)
+    {
+        if (cardsToLerp.Count == 0) return;
+        //lerp the card to the position
+        StartCoroutine(LerpCard(cardsToLerp[0].gameObject, toPositions[0]));
+        cardsToLerp.RemoveAt(0);
+        toPositions.RemoveAt(0);
+    }
+
+    private IEnumerator LerpCard(GameObject card, Vector3 toPosition)
+    {
+        float elapsedTime = 0f;
+        Vector3 startPosition = card.transform.position;
+        while (elapsedTime < cardPackAnimationMoveTime)
+        {
+            elapsedTime += Time.deltaTime;
+            card.transform.position = Vector3.Lerp(startPosition, toPosition, elapsedTime / cardPackAnimationMoveTime);
+            yield return null;
+        }
+        EventBus<CardFinishedLerpingEvent>.Raise(new CardFinishedLerpingEvent());
     }
     
     

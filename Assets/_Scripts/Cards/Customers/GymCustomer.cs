@@ -7,6 +7,6 @@ public class GymCustomer : Card
 {
     public override void CardAction()
     {
-        Debug.Log("Gym customer card action");
+        Debug.Log("Vegetarian customer card action");
     }
 }

@@ -141,4 +141,12 @@ namespace EventBus {
             this.expectedRevenue = expectedRevenue;
         }
     }
+
+    public class CardFinishedLerpingEvent : Event
+    {
+        public CardFinishedLerpingEvent()
+        {
+        }
+        
+    }
 }

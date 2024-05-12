@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ade05379d0c8e34bba8d3d6774d8f7a, type: 3}
+  m_Name: Vegetarian
+  m_EditorClassIdentifier: 
+  customerName: Gym Customer
+  timesToSpawn: 1
+  turnsToSpawn: 1
+  customerPrefab: {fileID: 8554143632513836642, guid: 46fc8ea820df9f74b9ce4ba470adc8eb, type: 3}
