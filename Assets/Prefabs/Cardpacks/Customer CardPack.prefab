@@ -112,6 +112,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4009630635889985947, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: eb3082eb6f64830459837b7d59ce4801, type: 2}
+    - target: {fileID: 4009630635889985947, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7291407783313481107, guid: eb3082eb6f64830459837b7d59ce4801, type: 2}
+    - target: {fileID: 4009630635889985947, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: cardCount
       value: 3
