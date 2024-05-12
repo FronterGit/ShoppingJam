@@ -103,9 +103,9 @@ MonoBehaviour:
   canMove: 1
   reachedGoal: 0
   storeTime: 5
-  backSprite: {fileID: 21300000, guid: dc702ca7ce334aa478a2e3f9f040b7fb, type: 3}
+  backSprite: {fileID: 21300000, guid: d37076af7e135b545b282e3277d5e95c, type: 3}
   goalPoint: {x: 0, y: 0, z: 0}
-  customerType: 1
+  customerType: 2
 --- !u!61 &8370808551684596106
 BoxCollider2D:
   m_ObjectHideFlags: 0
