@@ -12,7 +12,7 @@ public class GrillDaddyStrategy : CustomerBehaviour
     {
         this.activeProductsDict = activeProductsDict;
     }
-    public void Buy()
+    public void Buy(int goldToAdd)
     {
         //Get all active products
         Dictionary<string, ShopManager.ProductHolder> activeProductsDict = ShopManager.activeProductsDict;
@@ -32,6 +32,6 @@ public class GrillDaddyStrategy : CustomerBehaviour
         }
         
         //Add the total value to the shop's money
-        EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(totalValue, true));
+        EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(totalValue + goldToAdd, true));
     }
 }

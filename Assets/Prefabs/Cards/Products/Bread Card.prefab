@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4385098037386254445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_Name
-      value: Avocado Card
+      value: Bread Card
       objectReference: {fileID: 0}
     - target: {fileID: 4633630922280162461, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_fontAsset
@@ -87,7 +87,7 @@ PrefabInstance:
     - target: {fileID: 5124579908531515969, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7ff701c9ffe8a854fbee532dfdae4df7, type: 3}
+      objectReference: {fileID: 21300000, guid: 1fcc4ffa23ce9004ca6c92c9fb515fe2, type: 3}
     - target: {fileID: 5417384365485857005, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -134,7 +134,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4385098037386254445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -1160511510493035731}
+      addedObject: {fileID: 3284208158923167709}
   m_SourcePrefab: {fileID: 100100000, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
 --- !u!114 &1568453212780495730 stripped
 MonoBehaviour:
@@ -152,7 +152,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4385098037386254445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
   m_PrefabInstance: {fileID: 6472853378576323854}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-1160511510493035731
+--- !u!114 &3284208158923167709
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,14 +161,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7281984923996589411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dcc6768cea0ba64b998e419c9805b62, type: 3}
+  m_Script: {fileID: 11500000, guid: 2df002fbf30293c4eae845362ff52eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inHand: 0
-  title: Avocado
-  description: +2$ per customer. This effect is doubled for vegetarians.
-  rarity: 2
+  title: Bread
+  description: Worth 1$, and 1$ extra for each unique food type you sell.
+  rarity: 1
   category: 0
   energyCost: 2
-  productInfo: {fileID: 11400000, guid: 0c7a6eab59e587a4d88188b59789e954, type: 2}
+  productInfo: {fileID: 11400000, guid: 296739858d6c95f44a2d2cd1a06bf427, type: 2}
   customerInfo: {fileID: 0}

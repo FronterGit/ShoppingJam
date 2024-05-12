@@ -114,24 +114,28 @@ PrefabInstance:
       objectReference: {fileID: 6311901054301470422}
     - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: cards.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: cards.Array.data[0]
       value: 
-      objectReference: {fileID: -3623458383939144197, guid: c0de5a87421fd5b418b6e64a0746f8c3, type: 3}
+      objectReference: {fileID: -1160511510493035731, guid: 4d1ded8104dbb0c40ba5273aafd8aeff, type: 3}
     - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: cards.Array.data[1]
       value: 
-      objectReference: {fileID: -3623458383939144197, guid: 4d1ded8104dbb0c40ba5273aafd8aeff, type: 3}
+      objectReference: {fileID: -3623458383939144197, guid: c0de5a87421fd5b418b6e64a0746f8c3, type: 3}
     - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: cards.Array.data[2]
       value: 
-      objectReference: {fileID: -3623458383939144197, guid: 40a1f6d7b8ec928438d23a7ba6d7db01, type: 3}
+      objectReference: {fileID: 3284208158923167709, guid: 06a4b3d92695fa448985572f2fc222e3, type: 3}
     - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: cards.Array.data[3]
       value: 
-      objectReference: {fileID: -3623458383939144197, guid: 3c9ce688b42bfd444a980fc69cc392e2, type: 3}
+      objectReference: {fileID: -3623458383939144197, guid: 40a1f6d7b8ec928438d23a7ba6d7db01, type: 3}
+    - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
+      propertyPath: cards.Array.data[4]
+      value: 
+      objectReference: {fileID: 4259362399987266183, guid: 3c9ce688b42bfd444a980fc69cc392e2, type: 3}
     - target: {fileID: 4592960538762821319, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: m_Sprite
       value: 

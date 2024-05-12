@@ -59,7 +59,7 @@ PrefabInstance:
     - target: {fileID: 5124579908531515969, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 78e5485e023323445a456fac4e90420c, type: 3}
+      objectReference: {fileID: 21300000, guid: d251298e51a3fdb4b8f419e2bf9004cb, type: 3}
     - target: {fileID: 7245244584665326795, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: typeText
       value: 
@@ -101,9 +101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inHand: 0
-  title: Vegetarian
-  description: Adds one vegetarian customer to next turn. They will buy all products
-    of the vegetable type twice. They do not buy products of the meat type.
+  title: Grill Daddy
+  description: Adds one grill daddy customer to next turn. They will buy all products
+    of the meat type twice. They do not buy products of the meat type.
   rarity: 0
   category: 2
   energyCost: 1

@@ -11,7 +11,7 @@ public class BasicCustomerStrategy : CustomerBehaviour
         this.activeProductsDict = activeProductsDict;
     }
     
-    public void Buy()
+    public void Buy(int goldToAdd)
     {
         //Calculate the total value of all active products
         int totalValue = 0;
@@ -25,6 +25,6 @@ public class BasicCustomerStrategy : CustomerBehaviour
         }
         
         //Add the total value to the shop's money
-        EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(totalValue, true));
+        EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(totalValue + goldToAdd, true));
     }
 }

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4aa19fd13447cd4dbaa133633a9d215, type: 3}
-  m_Name: Avocado Info
+  m_Name: Bread info
   m_EditorClassIdentifier: 
-  productName: Avocado
-  productValue: 2
-  productIcon: {fileID: 21300000, guid: ca4181fe4c9ca524e92a142d29376696, type: 3}
-  productType: 2
+  productName: Bread
+  productValue: 1
+  productIcon: {fileID: 21300000, guid: 486ebd2b3197cb541a9e5bae6c81b249, type: 3}
+  productType: 0
   productDescription: 

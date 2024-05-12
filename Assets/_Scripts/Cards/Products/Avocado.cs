@@ -10,7 +10,7 @@ public class Avocado : Card
     {
         if (customer.customerType == Customer.CustomerType.Vegetarian)
         {
-            return 4;
+            return 2;
         }
 
         return 0;
