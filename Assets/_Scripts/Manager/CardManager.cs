@@ -166,7 +166,16 @@ public class CardManager : MonoBehaviour {
         //get the middle of the canvas
 
         Vector3 startPosition = new Vector3(canvas.pixelRect.width / 2, canvas.pixelRect.height / 2, 0);
-        float cardSpacing = 300;
+        // float cardSpacing = 300;
+        
+        // calculate card spacing
+        int cardsOnScreen = e.cardPack.cardCount;
+        float cardWidth = e.cardPack.cards[0].gameObject.GetComponent<RectTransform>().rect.width;
+        float totalCardSizes = cardsOnScreen * cardWidth;
+        float screenSize = canvas.pixelRect.width;
+        float remainingSpace = screenSize - totalCardSizes;
+        cardSpacing = remainingSpace / (cardsOnScreen + 1); 
+        
         startPosition = new Vector3(startPosition.x - (cardCount * cardSpacing), startPosition.y, startPosition.z);
         float cardRowWidth = startPosition.x + (cardCount * cardSpacing);
         //get the width of a card
