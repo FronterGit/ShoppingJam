@@ -41,6 +41,14 @@ public class TurnManager : MonoBehaviour {
     public void OnEndTurn(EndTurnEvent e) {
         turnInProgress = false;
         turnIndex++;
+        
+        //Drain the rest of the energy and then replenish it back to full
+        int currentEnergy = ShopManager.GetEnergyFunc?.Invoke() ?? 0;
+        int maxEnergy = ShopManager.GetMaxEnergyFunc?.Invoke() ?? 0;
+        
+        EventBus<ChangeEnergyEvent>.Raise(new ChangeEnergyEvent(-currentEnergy));
+        EventBus<ChangeEnergyEvent>.Raise(new ChangeEnergyEvent(maxEnergy));
+        
 
         // check if a store manager should spawn
         if (turns[turnIndex - 1].shouldSpawnManager) {

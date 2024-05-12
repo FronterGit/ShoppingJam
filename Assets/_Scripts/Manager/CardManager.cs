@@ -12,6 +12,7 @@ public class CardManager : MonoBehaviour
     public List<Card> hand = new List<Card>();
     [SerializeField] private float cardSpacing;
     [SerializeField] private float cardHeight;
+    public int maxHandSize = 5;
     
     private List<Card> cardsToPick = new List<Card>();
 
@@ -24,18 +25,24 @@ public class CardManager : MonoBehaviour
     private GameObject cardPack;
     private List<Card> cardsToLerp = new List<Card>();
     public List<Vector3> toPositions = new List<Vector3>();
+    
+    public static Func<List<Card>> GetHandFunc;
 
 
     private void OnEnable()
     {
         EventBus<CardPackEvent>.Subscribe(OpenPack);
         EventBus<CardFinishedLerpingEvent>.Subscribe(LerpCard);
+        
+        GetHandFunc += GetHand;
     }
     
     private void OnDisable()
     {
         EventBus<CardPackEvent>.Unsubscribe(OpenPack);
         EventBus<CardFinishedLerpingEvent>.Unsubscribe(LerpCard);
+        
+        GetHandFunc -= GetHand;
     }
 
     void Awake()
@@ -57,8 +64,10 @@ public class CardManager : MonoBehaviour
 
     public void CardAction(Card card)
     {
-        //Depending on the card category, different actions will be taken
         //IMPORTANT: Return out of the function if the card can't be activated.
+        if(ShopManager.GetEnergyFunc?.Invoke() < card.energyCost) return;
+        
+        //Depending on the card category, different actions will be taken
         switch (card.category)
         {
             //If the card is a product card...
@@ -136,10 +145,16 @@ public class CardManager : MonoBehaviour
         }
         
         
-        //If the card was in our hand, remove it from the hand list and destroy the game object
+        //If the card was in our hand...
         if (card.inHand)
         {
+            //Remove the card from the hand list
             hand.Remove(card);
+            
+            //Raise an event to change the energy
+            EventBus<ChangeEnergyEvent>.Raise(new ChangeEnergyEvent(-card.energyCost));
+            
+            //Destroy the card game object
             Destroy(card.gameObject);
         }
         //If the card was not in our hand, add it to the hand list and create a new game object to show the card is in our hand
@@ -222,6 +237,11 @@ public class CardManager : MonoBehaviour
             yield return null;
         }
         EventBus<CardFinishedLerpingEvent>.Raise(new CardFinishedLerpingEvent());
+    }
+
+    public List<Card> GetHand()
+    {
+        return hand;
     }
     
     
