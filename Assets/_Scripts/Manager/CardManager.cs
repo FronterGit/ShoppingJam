@@ -100,6 +100,7 @@ public class CardManager : MonoBehaviour {
                 break;
             case Card.Category.Upgrade:
                 Debug.Log("Upgrade card activated");
+                EventBus<UpgradeCardEvent>.Raise(new UpgradeCardEvent(card, true));
                 break;
         }
 

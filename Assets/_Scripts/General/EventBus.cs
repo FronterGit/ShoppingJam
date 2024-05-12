@@ -43,6 +43,16 @@ namespace EventBus {
             this.open = open;
         }
     }
+    
+    public class UpgradeCardEvent : Event {
+        public Card card;
+        public bool open;
+
+        public UpgradeCardEvent(Card card, bool open) {
+            this.card = card;
+            this.open = open;
+        }
+    }
 
     public class UpdateShopUIEvent : Event {
         public Card card;
