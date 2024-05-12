@@ -196,7 +196,7 @@ public class CardManager : MonoBehaviour
 
         }
         EventBus<CardFinishedLerpingEvent>.Raise(new CardFinishedLerpingEvent());
-        EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(-e.cardPack.cardPackValue));
+        EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(-e.cardPack.cardPackValue, false));
     }
     
     public void SpawnCardsToPick(Card card, Vector3 toPosition)

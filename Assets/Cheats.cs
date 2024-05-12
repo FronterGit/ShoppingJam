@@ -10,7 +10,7 @@ public class Cheats : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(1000));
+            EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(1000, false));
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
