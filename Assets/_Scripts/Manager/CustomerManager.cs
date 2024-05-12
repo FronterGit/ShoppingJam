@@ -19,6 +19,7 @@ public class CustomerManager : MonoBehaviour
         EventBus<StartTurnEvent>.Subscribe(OnStartTurn);
         EventBus<CustomerCardEvent>.Subscribe(OnCustomerCardActivated);
         EventBus<RequestNewCustomersListEvent>.Subscribe(SetCustomersToSpawn);
+        EventBus<EndTurnEvent>.Subscribe(DecrementAdditionalCustomerTurnsToSpawn);
     }
     
     private void OnDisable()
@@ -26,22 +27,29 @@ public class CustomerManager : MonoBehaviour
         EventBus<StartTurnEvent>.Unsubscribe(OnStartTurn);
         EventBus<CustomerCardEvent>.Unsubscribe(OnCustomerCardActivated);
         EventBus<RequestNewCustomersListEvent>.Unsubscribe(SetCustomersToSpawn);
+        EventBus<EndTurnEvent>.Unsubscribe(DecrementAdditionalCustomerTurnsToSpawn);
+    }
+
+    private void Start()
+    {
+        //Request a new list of customers to spawn
+        EventBus<RequestNewCustomersListEvent>.Raise(new RequestNewCustomersListEvent());
     }
 
     public void OnStartTurn(StartTurnEvent e)
     {
         //Start the customer spawn coroutine
         StartCoroutine(SpawnCustomer());
-        
-        Debug.Log("Start turn");
     }
 
     public void SetCustomersToSpawn(RequestNewCustomersListEvent e)
     {
         customersToSpawn.Clear();
         
+        List<Turn> turns = TurnManager.GetTurns();
+        
         //Add the basic customer to the list
-        for(int i = 0; i < TurnManager.turns[TurnManager.turnIndex].basicCustomerCount; i++) customersToSpawn.Add(basicCustomerPrefab);
+        for(int i = 0; i < turns[TurnManager.turnIndex].basicCustomerCount; i++) customersToSpawn.Add(basicCustomerPrefab);
         
         //Add the additional customers to the list
         //For each additional customer...
@@ -53,29 +61,27 @@ public class CustomerManager : MonoBehaviour
                 //Add the customer to the list
                 customersToSpawn.Add(additionalCustomer.customer.gameObject);
             }
-            
-            //Decrement the turn to spawn
-            additionalCustomer.turnsToSpawn--;
-            
-            //If the turn to spawn is 0, remove the customer from the list
-            if (additionalCustomer.turnsToSpawn <= 0)
-            {
-                additionalCustomers.Remove(additionalCustomer);
-            }
         }
+        
+        foreach(GameObject c in customersToSpawn) Debug.Log(c.name);
+        
+        EventBus<UpdateCustomerPreviewEvent>.Raise(new UpdateCustomerPreviewEvent());
     }
     
     private IEnumerator SpawnCustomer()
     {
         //Calculate the time between customers
         int customerSpawnCount = customersToSpawn.Count;
-        float timeBetweenCustomers = (float)TurnManager.turns[TurnManager.turnIndex].playTime / customerSpawnCount;
+        
+        List<Turn> turns = TurnManager.GetTurns();
+        float timeBetweenCustomers = (float)turns[TurnManager.turnIndex].playTime / customerSpawnCount;
         
         //Spawn the customers
         for (int i = 0; i < customerSpawnCount; i++)
         {
             //Set a random customer to spawn
             int random = UnityEngine.Random.Range(0, customersToSpawn.Count);
+            Debug.Log(random + " " + customersToSpawn.Count);
             GameObject customer = customersToSpawn[random];
             
             //Spawn the customer and remove it from the list
@@ -103,15 +109,32 @@ public class CustomerManager : MonoBehaviour
         
         //Add the additional customer to the list
         additionalCustomers.Add(additionalCustomer);
+                
+        EventBus<RequestNewCustomersListEvent>.Raise(new RequestNewCustomersListEvent());
+    }
+
+    public void DecrementAdditionalCustomerTurnsToSpawn(EndTurnEvent e)
+    {
+        //Because we are listening for the end of a turn, we should do a check if it was the final turn. If it was, we can just return.
+        if (TurnManager.turnIndex >= TurnManager.GetTurns().Count - 1) return;
+        
+        //Decrement the turns to spawn for each additional customer
+        foreach (var additionalCustomer in additionalCustomers)
+        {
+            additionalCustomer.turnsToSpawn--;
+        }
+        
+        //Remove any additional customers that have reached 0 turns to spawn
+        additionalCustomers.RemoveAll(c => c.turnsToSpawn == 0);
+        
+        //Request a new list of customers to spawn
+        EventBus<RequestNewCustomersListEvent>.Raise(new RequestNewCustomersListEvent());
     }
     
     public void OnCustomerCardActivated(CustomerCardEvent e)
     {
         Customer customer = e.card.customerInfo.customerPrefab.GetComponent<Customer>();
         AddAdditionalCustomer(customer, e.card.customerInfo.timesToSpawn, e.card.customerInfo.turnsToSpawn);
-        
-        //Request a new list of customers to spawn
-        EventBus<RequestNewCustomersListEvent>.Raise(new RequestNewCustomersListEvent());
     }
 
     public class AdditionalCustomer

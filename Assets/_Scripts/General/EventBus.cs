@@ -113,4 +113,11 @@ namespace EventBus
         {
         }
     }
+    
+    public class UpdateCustomerPreviewEvent : Event
+    {
+        public UpdateCustomerPreviewEvent()
+        {
+        }
+    }
 }

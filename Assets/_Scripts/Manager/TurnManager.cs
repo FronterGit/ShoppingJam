@@ -6,28 +6,38 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    public static List<Turn> turns = new List<Turn>();
+    public List<Turn> turns = new List<Turn>();
     bool turnInProgress = false;
     public static int turnIndex = 0;
+    
+    public static Func<List<Turn>> GetTurns;
 
     private void OnEnable()
     {
         EventBus<EndTurnEvent>.Subscribe(OnEndTurn);
+        GetTurns += GetTurnsList;
     }
     
     private void OnDisable()
     {
         EventBus<EndTurnEvent>.Unsubscribe(OnEndTurn);
+        GetTurns -= GetTurnsList;
     }
 
     public void OnStartTurn()
     {
+        //Check if we have any more turns to play
+        if (turnIndex >= turns.Count)
+        {
+            Debug.Log("No more turns to play");
+            return;
+        }
+        
         if (turnInProgress)
         {
             Debug.LogError("Turn already in progress");
             return;
         }
-        Debug.Log("Start turn");
         turnInProgress = true;
         EventBus<StartTurnEvent>.Raise(new StartTurnEvent(turns[turnIndex]));
     }
@@ -42,9 +52,11 @@ public class TurnManager : MonoBehaviour
             Debug.Log("Game over");
             return;
         }
-        
-        //Request new customers list
-        EventBus<RequestNewCustomersListEvent>.Raise(new RequestNewCustomersListEvent());
+    }
+    
+    public List<Turn> GetTurnsList()
+    {
+        return turns;
     }
 }
 

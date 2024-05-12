@@ -15,7 +15,7 @@ public class Customer : MonoBehaviour
     public enum CustomerType
     {
         Basic,
-        VIP
+        Gym
     }
     
     public CustomerType customerType;
@@ -27,7 +27,7 @@ public class Customer : MonoBehaviour
             case CustomerType.Basic:
                 customerBehaviour = new BasicCustomerStrategy();
                 break;
-            case CustomerType.VIP:
+            case CustomerType.Gym:
                 customerBehaviour = new BasicCustomerStrategy();
                 Debug.Log("VIP customer");
                 break;

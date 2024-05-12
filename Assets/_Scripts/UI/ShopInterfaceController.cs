@@ -26,11 +26,14 @@ public class ShopInterfaceController : MonoBehaviour
         //The ShopManager will raise this event when a card is added or removed from play
         //It is also raised when the game starts, so we can update the entire UI
         EventBus<UpdateShopUIEvent>.Subscribe(UpdateShopInterface);
+        EventBus<UpdateCustomerPreviewEvent>.Subscribe(UpdateCustomerPreview);
+
     }
     
     private void OnDisable()
     {
         EventBus<UpdateShopUIEvent>.Unsubscribe(UpdateShopInterface);
+        EventBus<UpdateCustomerPreviewEvent>.Unsubscribe(UpdateCustomerPreview);
     }
 
     void Start()
@@ -56,6 +59,7 @@ public class ShopInterfaceController : MonoBehaviour
             currentMenuIndex = 0;
         }
         shopMenus[currentMenuIndex].SetActive(true);
+        EventBus<UpdateCustomerPreviewEvent>.Raise(new UpdateCustomerPreviewEvent());
     }
     
     private void UpdateShopInterface(UpdateShopUIEvent e)
@@ -103,6 +107,43 @@ public class ShopInterfaceController : MonoBehaviour
                 //Tell that row to update its products
                 productsRow.UpdateProducts();
                 break;
+        }
+    }
+    
+    private void UpdateCustomerPreview(UpdateCustomerPreviewEvent e)
+    {
+        //Clear the customer preview column
+        foreach (Transform child in customerPreviewColumn.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        
+        List<GameObject> customerList = new List<GameObject>();
+        customerList = CustomerManager.customersToSpawn;
+        
+        List<CustomerPreview> customerPreviews = new List<CustomerPreview>();
+        
+        foreach (var customer in customerList)
+        {
+            CustomerPreview customerPreview = Instantiate(customerPreviewPrefab, customerPreviewColumn.transform).GetComponent<CustomerPreview>();
+            customerPreview.customerName = customer.GetComponent<Customer>().customerType.ToString();
+            customerPreview.customerAmount = 1;
+            customerPreviews.Add(customerPreview);
+        }
+        
+        //Loop over customerPreviews and delete duplicates, incrementing the amount of the first entry with the same type
+        for (int i = 0; i < customerPreviews.Count; i++)
+        {
+            for (int j = i + 1; j < customerPreviews.Count; j++)
+            {
+                if (customerPreviews[i].customerName == customerPreviews[j].customerName)
+                {
+                    customerPreviews[i].customerAmount++;
+                    Destroy(customerPreviews[j].gameObject);
+                    customerPreviews.RemoveAt(j);
+                    j--;
+                }
+            }
         }
     }
     

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8370808551684596106}
   - component: {fileID: -2229219795244010932}
   m_Layer: 0
-  m_Name: VIPCustomer
+  m_Name: Gym Customer
   m_TagString: Customer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
