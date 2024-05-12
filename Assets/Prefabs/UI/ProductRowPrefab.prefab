@@ -128,6 +128,18 @@ PrefabInstance:
       propertyPath: m_text
       value: Dairy
       objectReference: {fileID: 0}
+    - target: {fileID: 1641607337933366834, guid: 9cb079fb1c20c1942814ff9e4ea7a555, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: abee7cbef0da8274cb7b5bdaca6f00a5, type: 2}
+    - target: {fileID: 1641607337933366834, guid: 9cb079fb1c20c1942814ff9e4ea7a555, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2396575015719464933, guid: abee7cbef0da8274cb7b5bdaca6f00a5, type: 2}
+    - target: {fileID: 1641607337933366834, guid: 9cb079fb1c20c1942814ff9e4ea7a555, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4305095121159017934, guid: 9cb079fb1c20c1942814ff9e4ea7a555, type: 3}
       propertyPath: m_Name
       value: ProductType
