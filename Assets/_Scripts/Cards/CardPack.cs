@@ -11,6 +11,16 @@ public class CardPack : MonoBehaviour
 
     public void OnClick()
     {
+        if (CardManager.instance.GetHand().Count >= CardManager.instance.maxHandSize)
+        {
+            return;
+        }
+        
+        if(ShopManager.GetMoneyFunc?.Invoke() < cardPackValue)
+        {
+            return;
+        }
+        
         EventBus<CardPackEvent>.Raise(new CardPackEvent(this, true));
     }
 }

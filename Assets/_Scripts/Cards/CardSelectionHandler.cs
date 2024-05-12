@@ -15,8 +15,7 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
     private Vector3 _originalPosition;
     private Vector3 _originalScale;
     private bool _isMoving = false;
-
-    private int currentChildIndex;
+    
     private int toChildIndex;
 
     private Card card;
@@ -29,7 +28,6 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
 
         card = GetComponent<Card>();
 
-        currentChildIndex = transform.GetSiblingIndex();
 
     }
 
@@ -40,16 +38,7 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
 
         Vector3 endPosition;
         Vector3 endScale;
-
-        toChildIndex = cardHandParent.transform.childCount - 1;
-
-        if (currentChildIndex != toChildIndex)
-        {
-           currentChildIndex = transform.GetSiblingIndex();
-        }
-       
-       
-
+        
         float elapsedTime = 0f;
         while(elapsedTime < _moveTime)
         {
@@ -58,14 +47,13 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
 
             if (startingAnimation)
             {
-
-                transform.SetSiblingIndex(toChildIndex);
                 endPosition = new Vector3(_originalPosition.x, _originalPosition.y + _verticalMoveAmount, _originalPosition.z);
                 endScale = _originalScale * _scaleAmount;
             }
             else
             {
-                
+
+                    
                 endPosition = _originalPosition;
                 endScale = _originalScale;
            
@@ -96,10 +84,23 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
     public void OnSelect(BaseEventData eventData)
     {
         StartCoroutine(MoveCard(true));
+        transform.SetSiblingIndex(cardHandParent.transform.childCount - 1);
     }
 
     public void OnDeselect(BaseEventData eventData)
     {
         StartCoroutine(MoveCard(false));
+        
+        //Find our index in the hand
+        List<Card> hand = CardManager.instance.GetHand();
+        for (int i = 0; i < hand.Count; i++)
+        {
+            if (hand[i] == card)
+            {
+                toChildIndex = i;
+                break;
+            }
+        }
+        transform.SetSiblingIndex(toChildIndex);
     }
 }

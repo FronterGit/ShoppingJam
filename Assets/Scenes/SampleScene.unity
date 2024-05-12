@@ -349,11 +349,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turns:
   - turnIndex: 0
-    playTime: 15
-    basicCustomerCount: 0
+    playTime: 1
+    basicCustomerCount: 1
   - turnIndex: 1
-    playTime: 15
-    basicCustomerCount: 4
+    playTime: 1
+    basicCustomerCount: 1
+  - turnIndex: 2
+    playTime: 1
+    basicCustomerCount: 1
 --- !u!1 &81904484
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,6 +528,7 @@ Transform:
   - {fileID: 1006176595}
   - {fileID: 1323184719}
   - {fileID: 726494873}
+  - {fileID: 1745930428}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &158094083
@@ -2858,7 +2862,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1276534858}
-  - component: {fileID: 1276534859}
   m_Layer: 5
   m_Name: SpawnedCardsParent
   m_TagString: Untagged
@@ -2885,32 +2888,6 @@ RectTransform:
   m_AnchoredPosition: {x: -518, y: 216}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1276534859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276534857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 70
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1 &1280044384
 GameObject:
   m_ObjectHideFlags: 0
@@ -3318,7 +3295,7 @@ Transform:
   m_GameObject: {fileID: 1323184715}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.4699993, y: -0.63, z: 10}
+  m_LocalPosition: {x: -4.4699993, y: -0.19, z: 10}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3510,10 +3487,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: []
-  cardSpacing: 50
+  cardSpacing: 150
   cardHeight: 0
+  maxHandSize: 5
   cardPackOpeningParent: {fileID: 1276534858}
   cardHandParent: {fileID: 1365544358}
+  cardPackAnimationMoveTime: 0.1
+  toPositions: []
 --- !u!1 &1462975256
 GameObject:
   m_ObjectHideFlags: 0
@@ -4260,6 +4240,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714896850}
   m_CullTransparentMesh: 1
+--- !u!1 &1745930427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1745930428}
+  - component: {fileID: 1745930429}
+  m_Layer: 0
+  m_Name: Bamischijf
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1745930428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745930427}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 122888773}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1745930429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745930427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecaa1fa01cbc424d9e1df9ea1ca773f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1748830288
 GameObject:
   m_ObjectHideFlags: 0

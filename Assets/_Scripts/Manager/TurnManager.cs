@@ -47,6 +47,13 @@ public class TurnManager : MonoBehaviour
         turnInProgress = false;
         turnIndex++;
         
+        //Drain the rest of the energy and then replenish it back to full
+        int currentEnergy = ShopManager.GetEnergyFunc?.Invoke() ?? 0;
+        int maxEnergy = ShopManager.GetMaxEnergyFunc?.Invoke() ?? 0;
+        
+        EventBus<ChangeEnergyEvent>.Raise(new ChangeEnergyEvent(-currentEnergy));
+        EventBus<ChangeEnergyEvent>.Raise(new ChangeEnergyEvent(maxEnergy));
+        
         if (turnIndex >= turns.Count)
         {
             Debug.Log("Game over");
