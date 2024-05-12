@@ -53,7 +53,6 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
             else
             {
 
-                    
                 endPosition = _originalPosition;
                 endScale = _originalScale;
            
