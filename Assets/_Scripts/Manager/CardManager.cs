@@ -152,7 +152,7 @@ public class CardManager : MonoBehaviour
         {
             SpawnCardsToPick(card);
         }
-        EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(-e.cardPack.cardPackValue));
+        EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(-e.cardPack.cardPackValue, false));
     }
     
     public void SpawnCardsToPick(Card card)

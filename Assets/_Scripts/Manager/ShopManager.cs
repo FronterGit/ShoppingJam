@@ -17,6 +17,7 @@ public class ShopManager : MonoBehaviour
     public int money;
     public int energy;
     public int maxEnergy;
+    public int revenueBeforeManagerVisit;
     public List<Customer> customersList = new List<Customer>();
     
     public List<StartingProducts> startingProducts;
@@ -27,6 +28,7 @@ public class ShopManager : MonoBehaviour
     public static Func<int> GetMoneyFunc;
     public static Func<int> GetEnergyFunc;
     public static Func<int> GetMaxEnergyFunc;
+    public static Func<int> GetRevenueFunc;
 
     private void OnEnable()
     {
@@ -35,6 +37,7 @@ public class ShopManager : MonoBehaviour
         GetMoneyFunc += GetMoney;
         GetEnergyFunc += GetEnergy;
         GetMaxEnergyFunc += GetMaxEnergy;
+        GetRevenueFunc += GetRevenue;
         
         EventBus<ProductCardEvent>.Subscribe(ReceiveCard);
         EventBus<ProductCardEvent>.Subscribe(RemoveCard);
@@ -49,6 +52,7 @@ public class ShopManager : MonoBehaviour
         GetMoneyFunc -= GetMoney;
         GetEnergyFunc -= GetEnergy;
         GetMaxEnergyFunc -= GetMaxEnergy;
+        GetRevenueFunc -= GetRevenue;
 
         EventBus<ProductCardEvent>.Unsubscribe(ReceiveCard);
         EventBus<ProductCardEvent>.Unsubscribe(RemoveCard);
@@ -97,6 +101,12 @@ public class ShopManager : MonoBehaviour
     private void OnChangeMoney(ChangeMoneyEvent e)
     {
         money += e.money;
+
+        // if the money is income, add it to the revenue counter
+        if (e.isRevenue) {
+            revenueBeforeManagerVisit += e.money;
+        }
+        
         EventBus<MoneyChangedEvent>.Raise(new MoneyChangedEvent(money));
     }
     
@@ -183,6 +193,8 @@ public class ShopManager : MonoBehaviour
     {
         return maxEnergy;
     }
+
+    public int GetRevenue() => revenueBeforeManagerVisit;
     
     [System.Serializable]
     public class StartingProducts

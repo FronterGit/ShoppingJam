@@ -64,9 +64,11 @@ namespace EventBus {
 
     public class ChangeMoneyEvent : Event {
         public int money;
+        public readonly bool isRevenue; // boolean to determine whether it is revenue made from a customer
 
-        public ChangeMoneyEvent(int money) {
+        public ChangeMoneyEvent(int money, bool isRevenue) {
             this.money = money;
+            this.isRevenue = isRevenue;
         }
     }
 
@@ -77,38 +79,34 @@ namespace EventBus {
             this.money = money;
         }
     }
-    
-    public class ChangeEnergyEvent : Event
-    {
+
+    public class ChangeEnergyEvent : Event {
         public int energy;
-        public ChangeEnergyEvent(int energy)
-        {
+
+        public ChangeEnergyEvent(int energy) {
             this.energy = energy;
         }
     }
-    
-    public class EnergyChangedEvent : Event
-    {
+
+    public class EnergyChangedEvent : Event {
         public int energy;
         public int maxEnergy;
-        public EnergyChangedEvent(int energy, int maxEnergy)
-        {
+
+        public EnergyChangedEvent(int energy, int maxEnergy) {
             this.energy = energy;
             this.maxEnergy = maxEnergy;
         }
     }
-    
-    public class ChangeMaxEnergyEvent : Event
-    {
+
+    public class ChangeMaxEnergyEvent : Event {
         public int energy;
-        public ChangeMaxEnergyEvent(int energy)
-        {
+
+        public ChangeMaxEnergyEvent(int energy) {
             this.energy = energy;
         }
     }
-    
-    public class StartTurnEvent : Event
-    {
+
+    public class StartTurnEvent : Event {
         public Turn turn;
 
         public StartTurnEvent(Turn turn) {
@@ -136,8 +134,11 @@ namespace EventBus {
     /// </summary>
     public class RegionalManagerEvent : Event {
         public readonly int action; // 0 for spawn, 1 for despawn;
-        public RegionalManagerEvent(int action) {
+        public readonly int expectedRevenue;
+
+        public RegionalManagerEvent(int action, int expectedRevenue) {
             this.action = action;
+            this.expectedRevenue = expectedRevenue;
         }
     }
 }
