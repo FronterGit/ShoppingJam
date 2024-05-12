@@ -11,6 +11,7 @@ public class Customer : MonoBehaviour
     public bool canMove = true;
     public float storeTime = 5f;
     public CustomerBehaviour customerBehaviour;
+    public Dictionary<string, ShopManager.ProductHolder> activeProductsDict;
 
     public enum CustomerType
     {
@@ -22,15 +23,21 @@ public class Customer : MonoBehaviour
     
     void Start()
     {
+        activeProductsDict = ShopManager.activeProductsDict;
+        
+        
+        
+        
         switch (customerType)
         {
             case CustomerType.Basic:
-                customerBehaviour = new BasicCustomerStrategy();
+                customerBehaviour = new BasicCustomerStrategy(activeProductsDict);
                 break;
             case CustomerType.Vegetarian:
-                customerBehaviour = new VegetarianCustomerStrategy();
+                customerBehaviour = new VegetarianCustomerStrategy(activeProductsDict);
                 break;
         }
+        
     }
 
     // Update is called once per frame

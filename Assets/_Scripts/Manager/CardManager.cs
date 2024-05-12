@@ -181,7 +181,6 @@ public class CardManager : MonoBehaviour {
 
             //spawn a new card offscreen and lerp it to the position
             SpawnCardsToPick(card, startPosition);
-
         }
  */
 

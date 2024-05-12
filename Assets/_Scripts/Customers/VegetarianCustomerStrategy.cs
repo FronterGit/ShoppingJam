@@ -6,6 +6,12 @@ using EventBus;
 
 public class VegetarianCustomerStrategy : CustomerBehaviour
 {
+    public Dictionary<string, ShopManager.ProductHolder> activeProductsDict { get; set; }
+    
+    public VegetarianCustomerStrategy(Dictionary<string, ShopManager.ProductHolder> activeProductsDict)
+    {
+        this.activeProductsDict = activeProductsDict;
+    }
     public void Buy()
     {
         //Get all active products
