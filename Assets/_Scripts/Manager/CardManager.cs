@@ -148,16 +148,30 @@ public class CardManager : MonoBehaviour
     private void OpenPack(CardPackEvent e)
     {
         if(!e.open) return;
+
+        //get the middle of the canvas
+        Vector3 middlePosition = new Vector3(canvas.pixelRect.width / 2, canvas.pixelRect.height / 2, 0);
+        //get the width of a card
+        float cardSpacing = 300;
+        
+
+
         foreach (var card in e.cardPack.cards)
         {
-            SpawnCardsToPick(card);
+            //place the first card to the left of the middle of the canvas, then place the rest of the cards to the right of the previous card
+            
+            middlePosition.x -= cardSpacing;
+            SpawnCardsToPick(card, middlePosition);
+
+         
+
         }
         EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(-e.cardPack.cardPackValue));
     }
     
-    public void SpawnCardsToPick(Card card)
+    public void SpawnCardsToPick(Card card, Vector3 position)
     {
-        GameObject newCard = Instantiate(card.gameObject, new Vector3(0, 0, 0), Quaternion.identity, cardPackOpeningParent);
+        GameObject newCard = Instantiate(card.gameObject, position, Quaternion.identity, cardPackOpeningParent);
         Card newCardScript = newCard.GetComponent<Card>();
         cardsToPick.Add(newCardScript);
     }
