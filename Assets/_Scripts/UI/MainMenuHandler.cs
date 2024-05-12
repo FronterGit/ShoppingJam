@@ -5,7 +5,7 @@ public class MainMenuHandler : MonoBehaviour {
     public GameObject settingsPanel;
     public GameObject menuPanel;
     public void startGame() {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("GAME");
     }
 
     public void openSettings() {
