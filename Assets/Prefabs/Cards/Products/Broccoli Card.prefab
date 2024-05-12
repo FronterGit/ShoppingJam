@@ -84,7 +84,7 @@ MonoBehaviour:
   inHand: 0
   title: Broccoli
   description: Worth $1. No Additional effect.
-  rarity: 0
+  rarity: 2
   category: 0
   energyCost: 1
   productInfo: {fileID: 11400000, guid: b06de846ba2885f46b4657a1487bb1a1, type: 2}

@@ -152,7 +152,7 @@ MonoBehaviour:
   inHand: 0
   title: Beef Patty
   description: Worth 1$. Stackable (up to 3). Can be Combined
-  rarity: 0
+  rarity: 1
   category: 0
   energyCost: 1
   productInfo: {fileID: 11400000, guid: 776c133640b16d8438fd69dac75e8738, type: 2}

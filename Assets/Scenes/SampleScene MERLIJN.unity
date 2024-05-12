@@ -1977,7 +1977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customers: 0
   totalProductsValue: 0
-  money: 10
+  money: 99999
   energy: 3
   maxEnergy: 3
   revenueBeforeManagerVisit: 0
@@ -4248,8 +4248,14 @@ MonoBehaviour:
   hand: []
   cardSpacing: 50
   cardHeight: 0
+  maxHandSize: 5
   cardPackOpeningParent: {fileID: 1276534858}
   cardHandParent: {fileID: 1365544358}
+  cardPackAnimationMoveTime: 0.1
+  toPositions: []
+  commonChance: 0.4
+  rareChance: 0.35
+  legendaryChance: 0.25
 --- !u!1 &1462975256
 GameObject:
   m_ObjectHideFlags: 0

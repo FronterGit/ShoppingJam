@@ -7,7 +7,10 @@ using UnityEngine;
 public class CardPack : MonoBehaviour
 {
     public int cardPackValue;
+    public int cardCount;
     public List<Card> cards;
+    public List<Card> gameCards = new List<Card>();
+    
 
     public void OnClick()
     {
