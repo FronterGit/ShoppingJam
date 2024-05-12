@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 192827420503686985, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -802
+      value: -400
       objectReference: {fileID: 0}
     - target: {fileID: 3173022987224436472, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: m_Pivot.x
@@ -38,11 +38,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3173022987224436472, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 2100
+      value: 313
       objectReference: {fileID: 0}
     - target: {fileID: 3173022987224436472, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1500.1465
+      value: 494
       objectReference: {fileID: 0}
     - target: {fileID: 3173022987224436472, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -74,11 +74,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3173022987224436472, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 119.85625
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3173022987224436472, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -148.69534
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3173022987224436472, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -99,7 +99,7 @@ PrefabInstance:
     - target: {fileID: 4009630635889985947, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -2396575015719464933, guid: abee7cbef0da8274cb7b5bdaca6f00a5, type: 2}
+      objectReference: {fileID: 7291407783313481107, guid: abee7cbef0da8274cb7b5bdaca6f00a5, type: 2}
     - target: {fileID: 4009630635889985947, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -131,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 4592960538762821319, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0ed0c566a6cdc424d8990a92f3a763dd, type: 3}
+      objectReference: {fileID: 21300000, guid: e7b75f3fb9b77ae47812291682917b48, type: 3}
     - target: {fileID: 7725647919508433345, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: m_Name
       value: Upgrade Card pack

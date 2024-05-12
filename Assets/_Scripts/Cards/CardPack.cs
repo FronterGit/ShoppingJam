@@ -23,11 +23,13 @@ public class CardPack : MonoBehaviour
     {
         if (CardManager.instance.GetHand().Count >= CardManager.instance.maxHandSize)
         {
+            EventBus<ErrorPromptEvent>.Raise(new ErrorPromptEvent(ErrorPromptEvent.ErrorType.NotEnoughSpace));
             return;
         }
         
         if(ShopManager.GetMoneyFunc?.Invoke() < cardPackValue)
         {
+            EventBus<ErrorPromptEvent>.Raise(new ErrorPromptEvent(ErrorPromptEvent.ErrorType.NotEnoughMoney));
             return;
         }
         

@@ -169,4 +169,20 @@ namespace EventBus {
             this.customer = customer;    
         }
     }
+    
+    public class ErrorPromptEvent : Event
+    {
+        public enum ErrorType
+        {
+            NotEnoughMoney,
+            NotEnoughSpace,
+            NotEnoughEnergy
+        }
+        public ErrorType errorType;
+        
+        public ErrorPromptEvent(ErrorType errorType)
+        {
+            this.errorType = errorType;
+        }
+    }
 }

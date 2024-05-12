@@ -60,7 +60,11 @@ public class CardManager : MonoBehaviour {
 
     public void CardAction(Card card) {
         //IMPORTANT: Return out of the function if the card can't be activated.
-        if (ShopManager.GetEnergyFunc?.Invoke() < card.energyCost) return;
+        if (ShopManager.GetEnergyFunc?.Invoke() < card.energyCost)
+        {
+            EventBus<ErrorPromptEvent>.Raise(new ErrorPromptEvent(ErrorPromptEvent.ErrorType.NotEnoughEnergy));
+            return;
+        }
 
         //Depending on the card category, different actions will be taken
         switch (card.category) {
@@ -81,12 +85,14 @@ public class CardManager : MonoBehaviour {
                     else {
                         Debug.Log(
                             "Product can't be activated because the limit for this product type has been reached");
+                        EventBus<ErrorPromptEvent>.Raise(new ErrorPromptEvent(ErrorPromptEvent.ErrorType.NotEnoughSpace));
                         return;
                     }
                 }
                 else {
                     Debug.Log(
                         "Product can't be activated because the product type is not in the active products dictionary");
+                    EventBus<ErrorPromptEvent>.Raise(new ErrorPromptEvent(ErrorPromptEvent.ErrorType.NotEnoughSpace));
                     return;
                 }
 
@@ -233,12 +239,10 @@ public class CardManager : MonoBehaviour {
         for (int i = 0; i < cardPack.cardCount; i++) {
             float random = UnityEngine.Random.Range(0f, 1f);
 
-            Vector3 startPosition = new Vector3(0 + (offset / 2f) + 10, canvas.pixelRect.height / 2, 0);
+            Vector3 startPosition = new Vector3(300 + (offset / 2f) + 10, canvas.pixelRect.height / 2, 0);
             startPosition = new Vector3(startPosition.x + cardSpacing * i, startPosition.y, startPosition.z);
 
             Card card;
-
-            Debug.Log("random: " + random);
 
             if (random < commonChance) {
                 //If we have no common cards, reroll

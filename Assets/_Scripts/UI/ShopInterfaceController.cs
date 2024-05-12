@@ -28,6 +28,12 @@ public class ShopInterfaceController : MonoBehaviour
     [SerializeField] public TMPro.TextMeshProUGUI regionalTurn;
     [SerializeField] public TMPro.TextMeshProUGUI regionalExpected;
     [SerializeField] public TMPro.TextMeshProUGUI totalTurns;
+    
+    //Other UI
+    [SerializeField] public Image promptBackGround;
+    [SerializeField] public TMPro.TextMeshProUGUI notEnoughMoneyText;
+    [SerializeField] public TMPro.TextMeshProUGUI notEnoughSpaceText;
+    [SerializeField] public TMPro.TextMeshProUGUI notEnoughEnergyText;
 
     private void OnEnable()
     {
@@ -35,6 +41,7 @@ public class ShopInterfaceController : MonoBehaviour
         //It is also raised when the game starts, so we can update the entire UI
         EventBus<UpdateShopUIEvent>.Subscribe(UpdateShopInterface);
         EventBus<UpdateCustomerPreviewEvent>.Subscribe(UpdateCustomerPreview);
+        EventBus<ErrorPromptEvent>.Subscribe(OnErrorPrompt);
 
     }
     
@@ -42,6 +49,7 @@ public class ShopInterfaceController : MonoBehaviour
     {
         EventBus<UpdateShopUIEvent>.Unsubscribe(UpdateShopInterface);
         EventBus<UpdateCustomerPreviewEvent>.Unsubscribe(UpdateCustomerPreview);
+        EventBus<ErrorPromptEvent>.Unsubscribe(OnErrorPrompt);
     }
 
     void Start()
@@ -180,6 +188,34 @@ public class ShopInterfaceController : MonoBehaviour
         //Update the turn count
         int turnIndex = TurnManager.turnIndex + 1;
         customerPreviewTurnCountValue.text = turnIndex.ToString();
+    }
+
+    public void OnErrorPrompt(ErrorPromptEvent e)
+    {
+        switch (e.errorType)
+        {
+            case ErrorPromptEvent.ErrorType.NotEnoughMoney:
+                notEnoughMoneyText.gameObject.SetActive(true);
+                break;
+            case ErrorPromptEvent.ErrorType.NotEnoughSpace:
+                notEnoughSpaceText.gameObject.SetActive(true);
+                break;
+            case ErrorPromptEvent.ErrorType.NotEnoughEnergy:
+                notEnoughEnergyText.gameObject.SetActive(true);
+                break;
+        }
+        
+        promptBackGround.gameObject.SetActive(true);
+        StartCoroutine(HideErrorPrompt());
+    }
+    
+    public IEnumerator HideErrorPrompt()
+    {
+        yield return new WaitForSeconds(2f);
+        notEnoughMoneyText.gameObject.SetActive(false);
+        notEnoughSpaceText.gameObject.SetActive(false);
+        notEnoughEnergyText.gameObject.SetActive(false);
+        promptBackGround.gameObject.SetActive(false);
     }
     
     
