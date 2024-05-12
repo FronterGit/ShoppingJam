@@ -5,8 +5,8 @@ using Cards;
 
 public class GymCustomer : Card
 {
-    public override void CardAction()
+    public override int AddedGoldFromProducts(Dictionary<string, ShopManager.ProductHolder> activeProductsDict, Customer customer)
     {
-        Debug.Log("Vegetarian customer card action");
+        throw new System.NotImplementedException();
     }
 }

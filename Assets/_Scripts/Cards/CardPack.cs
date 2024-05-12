@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cards;
@@ -11,6 +12,12 @@ public class CardPack : MonoBehaviour
     public List<Card> cards;
     public List<Card> gameCards = new List<Card>();
     
+    [SerializeField] private TMPro.TextMeshProUGUI cardCostText;
+
+    private void Start()
+    {
+        cardCostText.text = cardPackValue.ToString();
+    }
 
     public void OnClick()
     {

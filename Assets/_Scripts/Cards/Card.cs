@@ -58,7 +58,7 @@ namespace Cards
             }
         }
 
-        public abstract void CardAction();
+        public abstract int AddedGoldFromProducts(Dictionary<string, ShopManager.ProductHolder> activeProductsDict, Customer customer);
     }
 }
 

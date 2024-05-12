@@ -10,6 +10,7 @@ public class CardInfoSetter : MonoBehaviour
     [SerializeField] public TMPro.TextMeshProUGUI titleText;
     [SerializeField] public TMPro.TextMeshProUGUI descriptionText;
     [SerializeField] public TMPro.TextMeshProUGUI categoryText;
+    [SerializeField] public TMPro.TextMeshProUGUI typeText;
     [SerializeField] public TMPro.TextMeshProUGUI rarityText;
     
     void Start()
@@ -23,5 +24,14 @@ public class CardInfoSetter : MonoBehaviour
         categoryText.text = card.category.ToString();
         rarityText.text = card.rarity.ToString();
         energyCostText.text = card.energyCost.ToString();
+
+        if (card.category == Card.Category.Product)
+        {
+            typeText.text = card.productInfo.productType.ToString();
+        }
+        else
+        {
+            typeText.text = "None";
+        }
     }
 }

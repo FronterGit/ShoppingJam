@@ -106,8 +106,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: cardCount
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
+      propertyPath: cardCostText
+      value: 
+      objectReference: {fileID: 6311901054301470422}
     - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: cards.Array.size
       value: 4
@@ -141,3 +145,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
+--- !u!114 &6311901054301470422 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4009630635889985947, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
+  m_PrefabInstance: {fileID: 6934823524732401485}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

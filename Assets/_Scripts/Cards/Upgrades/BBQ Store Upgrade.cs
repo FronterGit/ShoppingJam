@@ -4,10 +4,6 @@ using Cards;
 using UnityEngine;
 
 public class BBQStoreUpgrade : Card, UpgradeCardBeviour{
-    public override void CardAction()
-    {
-        Debug.Log("BBQ Store Upgrade card action");
-    }
 
     public Dictionary<string, ShopManager.ProductHolder> GetNewActiveProductsDict(Dictionary<string, ShopManager.ProductHolder> activeProductsDict)
     {
@@ -36,5 +32,15 @@ public class BBQStoreUpgrade : Card, UpgradeCardBeviour{
         
         
         return activeProductsDict;
+    }
+
+    public override int AddedGoldFromProducts(Dictionary<string, ShopManager.ProductHolder> activeProductsDict, Customer customer)
+    {
+        throw new System.NotImplementedException();
+    }
+    
+    public void ApplyUpgrade()
+    {
+        //No effect.
     }
 }
