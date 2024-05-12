@@ -266,10 +266,10 @@ public class CardManager : MonoBehaviour {
             SpawnCardsToPick(card, startPosition);
         }
 
-
+        if (AudioManager.instance != null) AudioManager.instance.PlaySound("shuffle_sound_1");
         EventBus<CardFinishedLerpingEvent>.Raise(new CardFinishedLerpingEvent());
         EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(-e.cardPack.cardPackValue, false));
-        if (AudioManager.instance != null) AudioManager.instance.PlaySound("shuffle_sound_1");
+        
     }
 
     public void SpawnCardsToPick(Card card, Vector3 toPosition) {
