@@ -146,9 +146,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4385098037386254445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -3623458383939144197}
-    - targetCorrespondingSourceObject: {fileID: 4385098037386254445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
-      insertIndex: -1
       addedObject: {fileID: -1160511510493035731}
   m_SourcePrefab: {fileID: 100100000, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
 --- !u!114 &1568453212780495730 stripped
@@ -167,26 +164,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4385098037386254445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
   m_PrefabInstance: {fileID: 6472853378576323854}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-3623458383939144197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7281984923996589411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc4dd8f69aa1b524d85b54c22c9ca220, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inHand: 0
-  title: Broccoli
-  description: Worth $1. No Additional effect.
-  rarity: 2
-  category: 0
-  energyCost: 1
-  productInfo: {fileID: 11400000, guid: 0c7a6eab59e587a4d88188b59789e954, type: 2}
-  customerInfo: {fileID: 0}
 --- !u!114 &-1160511510493035731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inHand: 0
   title: Avocado
-  description: +2$ per customer. This effect is tripled for vegetarians.
+  description: +2$ per customer. This effect is doubled for vegetarians.
   rarity: 2
   category: 0
   energyCost: 2

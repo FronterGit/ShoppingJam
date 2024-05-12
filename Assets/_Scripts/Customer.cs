@@ -18,6 +18,8 @@ public class Customer : MonoBehaviour
     
     private Vector3 spawnPoint;
     public Vector3 goalPoint;
+    
+    private int goldToAdd = 0;
 
     public enum CustomerType
     {
@@ -38,8 +40,6 @@ public class Customer : MonoBehaviour
     {
         //Get the active products from the shop manager
         activeProductsDict = ShopManager.activeProductsDict;
-        
-        int goldToAdd = 0;
         //Loop through all active products and let them modify the active products dictionary
         foreach (ShopManager.ProductHolder product in activeProductsDict.Values)
         {
@@ -100,7 +100,7 @@ public class Customer : MonoBehaviour
             StartCoroutine(StoreTime());
             
             OnEnterShop();
-            customerBehaviour.Buy();
+
             
             reachedGoal = true;
             spriteRenderer.sprite = null;
@@ -112,6 +112,7 @@ public class Customer : MonoBehaviour
     private IEnumerator StoreTime()
     {
         yield return new WaitForSeconds(storeTime);
+        customerBehaviour.Buy(goldToAdd);
         canMove = true;
         spriteRenderer.sprite = backSprite;
     }

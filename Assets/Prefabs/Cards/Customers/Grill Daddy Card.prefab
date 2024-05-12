@@ -173,9 +173,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inHand: 0
-  title: Vegetarian
-  description: Adds one vegetarian customer to next turn. They will buy all products
-    of the vegetable type twice. They do not buy products of the meat type.
+  title: Grill Daddy
+  description: Adds one grill daddy customer to next turn. They will buy all products
+    of the meat type twice. They do not buy products of the meat type.
   rarity: 0
   category: 2
   energyCost: 1

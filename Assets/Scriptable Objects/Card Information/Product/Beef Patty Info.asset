@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4aa19fd13447cd4dbaa133633a9d215, type: 3}
   m_Name: Beef Patty Info
   m_EditorClassIdentifier: 
-  productName: Meat
-  productValue: 2
-  productIcon: {fileID: 21300000, guid: 5d86e458d2f7f9a48910761df0f3df85, type: 3}
+  productName: Beef Patty
+  productValue: 1
+  productIcon: {fileID: 21300000, guid: e605d9b8826b0e14b8b980f580a9a504, type: 3}
   productType: 1
+  productDescription: 

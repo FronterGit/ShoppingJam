@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   productName: Milk
   productValue: 1
-  productIcon: {fileID: 21300000, guid: 5d86e458d2f7f9a48910761df0f3df85, type: 3}
+  productIcon: {fileID: 21300000, guid: 74b69c3d674f74045823c6f1347a98c0, type: 3}
   productType: 0
+  productDescription: 
