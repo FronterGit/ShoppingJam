@@ -22,7 +22,6 @@ namespace Cards
         {
             Common,
             Rare,
-            Epic,
             Legendary
         }
 

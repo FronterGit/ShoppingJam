@@ -5,11 +5,14 @@ using EventBus;
 
 public class BasicCustomerStrategy : CustomerBehaviour
 {
+    public Dictionary<string, ShopManager.ProductHolder> activeProductsDict { get; set; }
+    public BasicCustomerStrategy(Dictionary<string, ShopManager.ProductHolder> activeProductsDict)
+    {
+        this.activeProductsDict = activeProductsDict;
+    }
+    
     public void Buy()
     {
-        //Get all active products
-        Dictionary<string, ShopManager.ProductHolder> activeProductsDict = ShopManager.activeProductsDict;
-        
         //Calculate the total value of all active products
         int totalValue = 0;
         foreach (var productHolder in activeProductsDict)
