@@ -20,6 +20,7 @@ public class ShopInterfaceController : MonoBehaviour
     
     [SerializeField] public GameObject customerPreviewPrefab;
     [SerializeField] public GameObject customerPreviewColumn;
+    [SerializeField] public TMPro.TextMeshProUGUI customerPreviewTurnCountValue;
 
     private void OnEnable()
     {
@@ -145,6 +146,10 @@ public class ShopInterfaceController : MonoBehaviour
                 }
             }
         }
+        
+        //Update the turn count
+        int turnIndex = TurnManager.turnIndex + 1;
+        customerPreviewTurnCountValue.text = turnIndex.ToString();
     }
     
     

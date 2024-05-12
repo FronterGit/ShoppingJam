@@ -52,6 +52,10 @@ public class Customer : MonoBehaviour
             
             customerBehaviour.Buy();
         }
+        else if (other.CompareTag("Death"))
+        {
+            Destroy(gameObject);
+        }
     }
     
 

@@ -15,37 +15,52 @@ public class ShopManager : MonoBehaviour
     public int customers;
     public int totalProductsValue;
     public int money;
+    public int energy;
+    public int maxEnergy;
     public List<Customer> customersList = new List<Customer>();
     
     public List<StartingProducts> startingProducts;
     public static Dictionary<string, ProductHolder> activeProductsDict;
     public static List<Card> activeEmployees = new List<Card>();
     public static List<Card> activeUpgrades = new List<Card>();
-    
-    public static event System.Action<int> OnMoneyChanged;
-    public static event System.Action<int> OnCustomersChanged;
+
+    public static Func<int> GetMoneyFunc;
+    public static Func<int> GetEnergyFunc;
+    public static Func<int> GetMaxEnergyFunc;
 
     private void OnEnable()
     {
         Shop.OnCustomer += OnCustomer;
-        TheMoneyHouse.ShopClicked += OnClick;
+        
+        GetMoneyFunc += GetMoney;
+        GetEnergyFunc += GetEnergy;
+        GetMaxEnergyFunc += GetMaxEnergy;
+        
         EventBus<ProductCardEvent>.Subscribe(ReceiveCard);
         EventBus<ProductCardEvent>.Subscribe(RemoveCard);
         EventBus<ChangeMoneyEvent>.Subscribe(OnChangeMoney);
+        EventBus<ChangeEnergyEvent>.Subscribe(OnChangeEnergy);
     }
     
     private void OnDisable()
     {
         Shop.OnCustomer -= OnCustomer;
-        TheMoneyHouse.ShopClicked -= OnClick;
+        
+        GetMoneyFunc -= GetMoney;
+        GetEnergyFunc -= GetEnergy;
+        GetMaxEnergyFunc -= GetMaxEnergy;
+
         EventBus<ProductCardEvent>.Unsubscribe(ReceiveCard);
         EventBus<ProductCardEvent>.Unsubscribe(RemoveCard);
         EventBus<ChangeMoneyEvent>.Unsubscribe(OnChangeMoney);
+        EventBus<ChangeEnergyEvent>.Unsubscribe(OnChangeEnergy);
     }
 
     void Start()
     {
         EventBus<MoneyChangedEvent>.Raise(new MoneyChangedEvent(money));
+        energy = maxEnergy;
+        EventBus<EnergyChangedEvent>.Raise(new EnergyChangedEvent(energy, maxEnergy));
 
         InitializeActiveProductsDict();
     }
@@ -77,13 +92,24 @@ public class ShopManager : MonoBehaviour
             customersList.Remove(customer.GetComponent<Customer>());
         }
         customers = customersList.Count;
-        OnCustomersChanged?.Invoke(customers);
     }
     
     private void OnChangeMoney(ChangeMoneyEvent e)
     {
         money += e.money;
         EventBus<MoneyChangedEvent>.Raise(new MoneyChangedEvent(money));
+    }
+    
+    private void OnChangeEnergy(ChangeEnergyEvent e)
+    {
+        energy += e.energy;
+        EventBus<EnergyChangedEvent>.Raise(new EnergyChangedEvent(energy, maxEnergy));
+    }
+    
+    private void OnChangeMaxEnergy(ChangeMaxEnergyEvent e)
+    {
+        maxEnergy += e.energy;
+        EventBus<EnergyChangedEvent>.Raise(new EnergyChangedEvent(maxEnergy, maxEnergy));
     }
     
     private void ReceiveCard(ProductCardEvent e)
@@ -141,6 +167,21 @@ public class ShopManager : MonoBehaviour
                 totalProductsValue += product.productInfo.productValue;
             }
         }
+    }
+    
+    public int GetMoney()
+    {
+        return money;
+    }
+    
+    public int GetEnergy()
+    {
+        return energy;
+    }
+    
+    public int GetMaxEnergy()
+    {
+        return maxEnergy;
     }
     
     [System.Serializable]

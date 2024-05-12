@@ -116,7 +116,7 @@ public class CustomerManager : MonoBehaviour
     public void DecrementAdditionalCustomerTurnsToSpawn(EndTurnEvent e)
     {
         //Because we are listening for the end of a turn, we should do a check if it was the final turn. If it was, we can just return.
-        if (TurnManager.turnIndex >= TurnManager.GetTurns().Count - 1) return;
+        if (TurnManager.turnIndex >= TurnManager.GetTurns().Count) return;
         
         //Decrement the turns to spawn for each additional customer
         foreach (var additionalCustomer in additionalCustomers)
