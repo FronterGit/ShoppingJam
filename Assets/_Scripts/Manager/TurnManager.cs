@@ -47,6 +47,11 @@ public class TurnManager : MonoBehaviour
         turnInProgress = false;
         turnIndex++;
         
+        // check if a store manager should spawn
+        if (turns[turnIndex - 1].shouldSpawnManager) {
+            
+        }
+        
         if (turnIndex >= turns.Count)
         {
             Debug.Log("Game over");
@@ -66,4 +71,5 @@ public class Turn
     public int turnIndex;
     public int playTime;
     public int basicCustomerCount;
+    public readonly bool shouldSpawnManager = false;
 }
