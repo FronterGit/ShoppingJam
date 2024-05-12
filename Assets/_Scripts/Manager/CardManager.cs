@@ -184,8 +184,6 @@ public class CardManager : MonoBehaviour
         float cardRowWidth = startPosition.x + (cardCount * cardSpacing);
         //get the width of a card
         
-        
-
 
         foreach (var card in e.cardPack.cards)
         {
