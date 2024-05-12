@@ -55,5 +55,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4385098037386254445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -9102701987825331173}
   m_SourcePrefab: {fileID: 100100000, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+--- !u!1 &7281984923996589411 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4385098037386254445, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+  m_PrefabInstance: {fileID: 6472853378576323854}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-9102701987825331173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7281984923996589411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3155acd61308349b36d7c65b323ca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inHand: 0
+  title: BBQ Section
+  description: Add a BBQ section to the store. Customers can buy your products of
+    type meat twice.
+  rarity: 0
+  category: 3
+  energyCost: 1
+  productInfo: {fileID: 0}
+  customerInfo: {fileID: 0}

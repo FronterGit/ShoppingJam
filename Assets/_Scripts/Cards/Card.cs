@@ -20,10 +20,9 @@ namespace Cards
         }
         public enum Rarity
         {
-            Common,
-            Rare,
-            Epic,
-            Legendary
+            Common, // 75%
+            Rare, // 20%
+            Legendary // 5%
         }
 
         public enum ProductType

@@ -93,17 +93,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
-      propertyPath: cardCount
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: cards.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: cards.Array.data[0]
       value: 
-      objectReference: {fileID: -3623458383939144197, guid: c0de5a87421fd5b418b6e64a0746f8c3, type: 3}
+      objectReference: {fileID: -9102701987825331173, guid: fd17af96418759441b73ed16b1a4faaa, type: 3}
     - target: {fileID: 4261163678327979552, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: cards.Array.data[1]
       value: 
@@ -119,10 +115,10 @@ PrefabInstance:
     - target: {fileID: 4592960538762821319, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9f1fb15a0408dbc489bb4979032b3d13, type: 3}
+      objectReference: {fileID: 21300000, guid: 0ed0c566a6cdc424d8990a92f3a763dd, type: 3}
     - target: {fileID: 7725647919508433345, guid: 3996de1afe0bbf74caa851680f9156b1, type: 3}
       propertyPath: m_Name
-      value: Product Card Pack
+      value: Upgrade Card pack
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -29,6 +29,7 @@ public class ShopManager : MonoBehaviour
     public static Func<int> GetEnergyFunc;
     public static Func<int> GetMaxEnergyFunc;
     public static Func<int> GetRevenueFunc;
+    public static Func<List<Card>> GetActiveUpgradesFunc;
 
     private void OnEnable()
     {
@@ -38,8 +39,9 @@ public class ShopManager : MonoBehaviour
         GetEnergyFunc += GetEnergy;
         GetMaxEnergyFunc += GetMaxEnergy;
         GetRevenueFunc += GetRevenue;
+        GetActiveUpgradesFunc += GetActiveUpgrades;
         
-        EventBus<ProductCardEvent>.Subscribe(ReceiveCard);
+        EventBus<ProductCardEvent>.Subscribe(ReceiveProduct);
         EventBus<ProductCardEvent>.Subscribe(RemoveCard);
         EventBus<ChangeMoneyEvent>.Subscribe(OnChangeMoney);
         EventBus<ChangeEnergyEvent>.Subscribe(OnChangeEnergy);
@@ -53,8 +55,9 @@ public class ShopManager : MonoBehaviour
         GetEnergyFunc -= GetEnergy;
         GetMaxEnergyFunc -= GetMaxEnergy;
         GetRevenueFunc -= GetRevenue;
+        GetActiveUpgradesFunc -= GetActiveUpgrades;
 
-        EventBus<ProductCardEvent>.Unsubscribe(ReceiveCard);
+        EventBus<ProductCardEvent>.Unsubscribe(ReceiveProduct);
         EventBus<ProductCardEvent>.Unsubscribe(RemoveCard);
         EventBus<ChangeMoneyEvent>.Unsubscribe(OnChangeMoney);
         EventBus<ChangeEnergyEvent>.Unsubscribe(OnChangeEnergy);
@@ -108,6 +111,7 @@ public class ShopManager : MonoBehaviour
         }
         
         EventBus<MoneyChangedEvent>.Raise(new MoneyChangedEvent(money));
+        EventBus<UpdateShopUIEvent>.Raise(new UpdateShopUIEvent(null));
     }
     
     private void OnChangeEnergy(ChangeEnergyEvent e)
@@ -122,7 +126,7 @@ public class ShopManager : MonoBehaviour
         EventBus<EnergyChangedEvent>.Raise(new EnergyChangedEvent(maxEnergy, maxEnergy));
     }
     
-    private void ReceiveCard(ProductCardEvent e)
+    private void ReceiveProduct(ProductCardEvent e)
     {
         if (!e.open) return;
         switch (e.card.category)
@@ -167,6 +171,13 @@ public class ShopManager : MonoBehaviour
         EventBus<UpdateShopUIEvent>.Raise(new UpdateShopUIEvent(e.card));
     }
     
+    private void ReceiveUpgrade(UpgradeCardEvent e)
+    {
+        if (!e.open) return;
+        activeUpgrades.Add(e.card);
+        //TODO: Update UI
+    }
+    
     private void UpdateTotalProductsValue()
     {
         totalProductsValue = 0;
@@ -195,6 +206,11 @@ public class ShopManager : MonoBehaviour
     }
 
     public int GetRevenue() => revenueBeforeManagerVisit;
+    
+    public List<Card> GetActiveUpgrades()
+    {
+        return activeUpgrades;
+    }
     
     [System.Serializable]
     public class StartingProducts
