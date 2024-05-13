@@ -360,7 +360,7 @@ MonoBehaviour:
     expectedRevenue: 0
   - turnIndex: 2
     playTime: 4
-    basicCustomerCount: 2
+    basicCustomerCount: 3
     shouldSpawnManager: 0
     expectedRevenue: 0
   - turnIndex: 3
@@ -372,7 +372,7 @@ MonoBehaviour:
     playTime: 4
     basicCustomerCount: 3
     shouldSpawnManager: 1
-    expectedRevenue: 35
+    expectedRevenue: 75
   - turnIndex: 5
     playTime: 4
     basicCustomerCount: 3
@@ -397,7 +397,7 @@ MonoBehaviour:
     playTime: 4
     basicCustomerCount: 3
     shouldSpawnManager: 1
-    expectedRevenue: 150
+    expectedRevenue: 250
 --- !u!1 &81904484
 GameObject:
   m_ObjectHideFlags: 0
@@ -2894,7 +2894,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &833473602
@@ -3162,7 +3162,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &870987665
@@ -5466,7 +5466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1320412861
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5952,9 +5952,9 @@ MonoBehaviour:
   cardHandParent: {fileID: 1365544358}
   cardPackAnimationMoveTime: 0.1
   toPositions: []
-  commonChance: 0.5
+  commonChance: 0.55
   rareChance: 0.4
-  legendaryChance: 0.1
+  legendaryChance: 0.05
 --- !u!1 &1462975256
 GameObject:
   m_ObjectHideFlags: 0
@@ -8274,6 +8274,8 @@ MonoBehaviour:
   mad: And thaaaaaaaat's not enough. You. Are. Fired! Bye :)
   okay: Barely enough.
   happy: Great Job! Yippie!
+  final: You've done a great job managing the store. You're promoted! (Thanks for
+    playing, close panel to go back to main menu)
 --- !u!1 &1976122626
 GameObject:
   m_ObjectHideFlags: 0

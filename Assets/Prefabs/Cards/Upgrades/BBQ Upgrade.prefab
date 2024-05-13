@@ -178,6 +178,6 @@ MonoBehaviour:
     type meat twice.
   rarity: 2
   category: 3
-  energyCost: 1
+  energyCost: 2
   productInfo: {fileID: 0}
   customerInfo: {fileID: 0}

@@ -15,6 +15,7 @@ public class RegionalManager : MonoBehaviour {
 
     [SerializeField] private String okay;
     [SerializeField] private String happy;
+    [SerializeField] private String final;
 
     private bool fired;
     private bool finished;
@@ -68,6 +69,7 @@ public class RegionalManager : MonoBehaviour {
             
             if(TurnManager.turnIndex >= TurnManager.GetTurns().Count) {
                 finished = true;
+                evaluationText.SetText(final);
             }
         }
 

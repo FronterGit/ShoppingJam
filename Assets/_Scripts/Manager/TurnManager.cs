@@ -59,6 +59,8 @@ public class TurnManager : MonoBehaviour {
             Debug.Log("Game over");
             return;
         }
+        
+        EventBus<ChangeMoneyEvent>.Raise(new ChangeMoneyEvent(10, false));
     }
 
     public List<Turn> GetTurnsList() {

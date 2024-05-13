@@ -43,6 +43,7 @@ namespace Cards
         {
             if (Input.GetKeyUp(KeyCode.Mouse1))
             {
+                if(!inHand) return;
                 CardManager.instance.DiscardCard(this);
                 return;
             }
