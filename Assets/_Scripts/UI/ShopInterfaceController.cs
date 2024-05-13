@@ -94,7 +94,7 @@ public class ShopInterfaceController : MonoBehaviour
             productRowsDict.Clear();
             
             //Get the active products and create a row for each product type
-            foreach (var key in ShopManager.activeProductsDict.Keys)
+            foreach (var key in ShopManager.GetActiveProductsDictFunc.Invoke().Keys)
             {
                 //Create a new row
                 ProductsRow productsRow = Instantiate(productsRowPrefab, productsColumn.transform).GetComponent<ProductsRow>();

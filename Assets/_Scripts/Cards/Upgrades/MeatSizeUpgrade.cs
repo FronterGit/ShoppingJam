@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using Cards;
 using EventBus;
-using UnityEngine;
 
-public class GeneralSizeUpgrade : Card, UpgradeCardBeviour
+public class MeatSizeUpgrade : Card, UpgradeCardBeviour
 {
     public override int AddedGoldFromProducts(Dictionary<string, ShopManager.ProductHolder> activeProductsDict, Customer customer)
     {
@@ -20,10 +20,10 @@ public class GeneralSizeUpgrade : Card, UpgradeCardBeviour
     
     public void ApplyUpgrade()
     {
-        Debug.Log("General Size Upgrade applied.");
+        Debug.Log("Meat Size Upgrade applied.");
         
         //Upgrade the size of the general product holder in the shop by 1.
-        ShopManager.GetActiveProductsDictFunc.Invoke()["General"].size++;
+        ShopManager.GetActiveProductsDictFunc.Invoke()["Meat"].size++;
         
         //Raise UI Update event.
         EventBus<UpdateShopUIEvent>.Raise(new UpdateShopUIEvent(null));

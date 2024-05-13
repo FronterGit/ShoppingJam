@@ -72,11 +72,14 @@ public class CardManager : MonoBehaviour {
             case Card.Category.Product:
                 string productType = card.productInfo.productType.ToString();
 
+                
+                Dictionary<string, ShopManager.ProductHolder> activeProductsDict = ShopManager.GetActiveProductsDictFunc?.Invoke();
+                
                 //Check if we have it's type in the active products dictionary
-                if (ShopManager.activeProductsDict.ContainsKey(productType)) {
+                if (activeProductsDict.ContainsKey(productType)) {
                     //Check if we have space for another product of this type
-                    if (ShopManager.activeProductsDict[productType].size >=
-                        ShopManager.activeProductsDict[productType].products.Count + 1) {
+                    if (activeProductsDict[productType].size >=
+                        activeProductsDict[productType].products.Count + 1) {
                         Debug.Log("Product activated");
                         EventBus<ProductCardEvent>.Raise(new ProductCardEvent(card, true));
 

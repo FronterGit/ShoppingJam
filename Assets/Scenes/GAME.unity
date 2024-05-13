@@ -350,39 +350,54 @@ MonoBehaviour:
   turns:
   - turnIndex: 0
     playTime: 3
-    basicCustomerCount: 3
+    basicCustomerCount: 2
     shouldSpawnManager: 0
     expectedRevenue: 0
   - turnIndex: 1
     playTime: 3
-    basicCustomerCount: 3
+    basicCustomerCount: 2
     shouldSpawnManager: 0
     expectedRevenue: 0
   - turnIndex: 2
     playTime: 4
-    basicCustomerCount: 4
+    basicCustomerCount: 2
     shouldSpawnManager: 0
     expectedRevenue: 0
   - turnIndex: 3
     playTime: 4
-    basicCustomerCount: 4
+    basicCustomerCount: 3
     shouldSpawnManager: 0
     expectedRevenue: 0
   - turnIndex: 4
     playTime: 4
-    basicCustomerCount: 4
+    basicCustomerCount: 3
     shouldSpawnManager: 1
-    expectedRevenue: 20
+    expectedRevenue: 35
   - turnIndex: 5
     playTime: 4
-    basicCustomerCount: 4
+    basicCustomerCount: 3
     shouldSpawnManager: 0
     expectedRevenue: 0
-  - turnIndex: 5
+  - turnIndex: 6
     playTime: 4
-    basicCustomerCount: 4
+    basicCustomerCount: 3
     shouldSpawnManager: 0
     expectedRevenue: 0
+  - turnIndex: 7
+    playTime: 4
+    basicCustomerCount: 3
+    shouldSpawnManager: 0
+    expectedRevenue: 0
+  - turnIndex: 8
+    playTime: 4
+    basicCustomerCount: 3
+    shouldSpawnManager: 0
+    expectedRevenue: 0
+  - turnIndex: 9
+    playTime: 4
+    basicCustomerCount: 3
+    shouldSpawnManager: 1
+    expectedRevenue: 150
 --- !u!1 &81904484
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +488,7 @@ Transform:
   m_GameObject: {fileID: 85021344}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.29, y: -5.38, z: 11}
+  m_LocalPosition: {x: -9.29, y: -5.38, z: 5.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1168,7 +1183,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 428, y: -407}
+  m_AnchoredPosition: {x: 428, y: -438}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &413282766
@@ -1816,7 +1831,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.7, y: 0, z: -10}
+  m_LocalPosition: {x: 4.7, y: 0, z: -16.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1845,7 +1860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &557773802
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2389,7 +2404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customers: 0
   totalProductsValue: 0
-  money: 10
+  money: 20
   energy: 3
   maxEnergy: 3
   revenueBeforeManagerVisit: 0
@@ -2398,9 +2413,9 @@ MonoBehaviour:
   - productType: 0
     amount: 2
   - productType: 1
-    amount: 3
+    amount: 1
   - productType: 2
-    amount: 4
+    amount: 1
 --- !u!4 &674664718
 Transform:
   m_ObjectHideFlags: 0
@@ -2586,12 +2601,12 @@ MonoBehaviour:
 
 
     You can buy new products (and more) in the shop panel.
-    Remember activating cards costs energy!
+    Remember: activating cards costs energy! You can right click a card to discard
+    it.
 
 
-    Every few turns I will come in
-    to check in you. If you do good, I will give you the promotion you''ve always
-    wanted (lol). Good luck!
+    Every few turns I will come in to check in you. If you do good, I will
+    give you the promotion you''ve always wanted (lol). Good luck!
 
 '
   m_isRightToLeft: 0
@@ -3215,7 +3230,6 @@ MonoBehaviour:
   shopMenus:
   - {fileID: 1186544731}
   - {fileID: 431264839}
-  - {fileID: 906060402}
   - {fileID: 1613927837}
   - {fileID: 1307283560}
   productsColumn: {fileID: 1169317644}
@@ -3230,8 +3244,8 @@ MonoBehaviour:
   totalTurns: {fileID: 1473323670}
   promptBackGround: {fileID: 1357901975}
   notEnoughMoneyText: {fileID: 324368428}
-  notEnoughSpaceText: {fileID: 1266493088}
-  notEnoughEnergyText: {fileID: 1899440534}
+  notEnoughSpaceText: {fileID: 1899440534}
+  notEnoughEnergyText: {fileID: 1266493088}
 --- !u!1 &906060402
 GameObject:
   m_ObjectHideFlags: 0
@@ -3966,7 +3980,7 @@ Transform:
   m_GameObject: {fileID: 1056123696}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5444,7 +5458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1320412861
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5656,7 +5670,7 @@ Transform:
   m_GameObject: {fileID: 1323184715}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.4699993, y: -0.19, z: 10}
+  m_LocalPosition: {x: -4.4699993, y: -0.19, z: -0.17}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5931,8 +5945,8 @@ MonoBehaviour:
   cardPackAnimationMoveTime: 0.1
   toPositions: []
   commonChance: 0.5
-  rareChance: 0.3
-  legendaryChance: 0.2
+  rareChance: 0.4
+  legendaryChance: 0.1
 --- !u!1 &1462975256
 GameObject:
   m_ObjectHideFlags: 0
@@ -7205,7 +7219,7 @@ Transform:
   m_GameObject: {fileID: 1715213801}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.26, y: -1.01, z: 0}
+  m_LocalPosition: {x: -2.26, y: -1.01, z: -5.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

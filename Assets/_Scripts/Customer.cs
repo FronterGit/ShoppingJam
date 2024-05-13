@@ -39,7 +39,7 @@ public class Customer : MonoBehaviour
     private void OnEnterShop()
     {
         //Get the active products from the shop manager
-        activeProductsDict = ShopManager.activeProductsDict;
+        activeProductsDict = ShopManager.GetActiveProductsDictFunc?.Invoke();
         //Loop through all active products and let them modify the active products dictionary
         foreach (ShopManager.ProductHolder product in activeProductsDict.Values)
         {
@@ -55,9 +55,10 @@ public class Customer : MonoBehaviour
         //Loop over all active upgrades and let them modify the active products dictionary
         foreach (UpgradeCardBeviour upgradeCard in activeUpgrades)
         {
-            Dictionary<string, ShopManager.ProductHolder> newActiveProductsDict =
+            Dictionary<string, ShopManager.ProductHolder> extraProductsDict =
                 upgradeCard.GetNewActiveProductsDict(activeProductsDict);
-            activeProductsDict = newActiveProductsDict;
+            
+            activeProductsDict = extraProductsDict;
         }
 
         switch (customerType)

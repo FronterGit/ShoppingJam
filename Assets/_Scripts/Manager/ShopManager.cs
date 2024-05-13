@@ -21,7 +21,7 @@ public class ShopManager : MonoBehaviour
     public List<Customer> customersList = new List<Customer>();
     
     public List<StartingProducts> startingProducts;
-    public static Dictionary<string, ProductHolder> activeProductsDict;
+    private Dictionary<string, ProductHolder> activeProductsDict;
     public static List<Card> activeEmployees = new List<Card>();
     public static List<Card> activeUpgrades = new List<Card>();
 
@@ -30,6 +30,7 @@ public class ShopManager : MonoBehaviour
     public static Func<int> GetMaxEnergyFunc;
     public static Func<int> GetRevenueFunc;
     public static Func<List<Card>> GetActiveUpgradesFunc;
+    public static Func<Dictionary<string, ProductHolder>> GetActiveProductsDictFunc;
 
     private void OnEnable()
     {
@@ -40,6 +41,7 @@ public class ShopManager : MonoBehaviour
         GetMaxEnergyFunc += GetMaxEnergy;
         GetRevenueFunc += GetRevenue;
         GetActiveUpgradesFunc += GetActiveUpgrades;
+        GetActiveProductsDictFunc += GetActiveProductsDict;
         
         EventBus<ProductCardEvent>.Subscribe(ReceiveProduct);
         EventBus<ProductCardEvent>.Subscribe(RemoveCard);
@@ -57,6 +59,7 @@ public class ShopManager : MonoBehaviour
         GetMaxEnergyFunc -= GetMaxEnergy;
         GetRevenueFunc -= GetRevenue;
         GetActiveUpgradesFunc -= GetActiveUpgrades;
+        GetActiveProductsDictFunc -= GetActiveProductsDict;
 
         EventBus<ProductCardEvent>.Unsubscribe(ReceiveProduct);
         EventBus<ProductCardEvent>.Unsubscribe(RemoveCard);
@@ -73,7 +76,12 @@ public class ShopManager : MonoBehaviour
 
         InitializeActiveProductsDict();
     }
-    
+
+    private void Update()
+    {
+        Debug.Log(activeProductsDict["Meat"].products.Count);
+    }
+
     private void InitializeActiveProductsDict()
     {
         activeProductsDict = new Dictionary<string, ProductHolder>();
@@ -216,6 +224,11 @@ public class ShopManager : MonoBehaviour
     public List<Card> GetActiveUpgrades()
     {
         return activeUpgrades;
+    }
+
+    public Dictionary<string, ProductHolder> GetActiveProductsDict()
+    {
+        return activeProductsDict;
     }
     
     [System.Serializable]

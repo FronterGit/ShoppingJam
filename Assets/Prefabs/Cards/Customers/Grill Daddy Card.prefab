@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 795020899489471021, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: _moveTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 795020899489471021, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
+      propertyPath: _verticalMoveAmount
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 1561841597779809451, guid: b52d5d36e649d544e995c1adafab6eeb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -175,7 +183,7 @@ MonoBehaviour:
   inHand: 0
   title: Grill Daddy
   description: Adds one grill daddy customer to next turn. They will buy all products
-    of the meat type twice. They do not buy products of the meat type.
+    of the meat type twice. They do not buy products of the vegetable type.
   rarity: 0
   category: 2
   energyCost: 1

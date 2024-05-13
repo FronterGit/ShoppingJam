@@ -17,7 +17,7 @@ public class ProductsRow : MonoBehaviour
     public void UpdateProducts()
     {
         //Get the size of the product list of our type
-        if(ShopManager.activeProductsDict[productTypeTitle.text].size != productImages.Count)
+        if(ShopManager.GetActiveProductsDictFunc.Invoke()[productTypeTitle.text].size != productImages.Count)
         {
             //If the size of the product list has changed, we need hard reset our images
             ResetImages();
@@ -25,7 +25,7 @@ public class ProductsRow : MonoBehaviour
         }
         
         //Get the product list of our type
-        List<Card> products = ShopManager.activeProductsDict[productTypeTitle.text].products;
+        List<Card> products = ShopManager.GetActiveProductsDictFunc.Invoke()[productTypeTitle.text].products;
         
         //Update the images
         for (int i = 0; i < products.Count; i++)
@@ -42,7 +42,7 @@ public class ProductsRow : MonoBehaviour
         }
         productImages.Clear();
         
-        for (int i = 0; i < ShopManager.activeProductsDict[productTypeTitle.text].size; i++)
+        for (int i = 0; i < ShopManager.GetActiveProductsDictFunc.Invoke()[productTypeTitle.text].size; i++)
         {
             Image newImage = Instantiate(productImagePrefab, productImagesParent);
             productImages.Add(newImage);

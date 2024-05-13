@@ -23,15 +23,22 @@ public class BBQStoreUpgrade : Card, UpgradeCardBeviour{
             }
         }
         
+        Dictionary<string, ShopManager.ProductHolder> extraProductsDict = new Dictionary<string, ShopManager.ProductHolder>();
         //Loop over all cloned products and add them to the active products dictionary
         foreach (var product in productsToAdd)
         {
-            activeProductsDict[product.productInfo.productType.ToString()].products.Add(product);
+            //If the product type is not yet in the dictionary, add it
+            if (!extraProductsDict.ContainsKey(product.productInfo.productType.ToString()))
+            {
+                extraProductsDict.Add(product.productInfo.productType.ToString(), new ShopManager.ProductHolder(99, new List<Card>()));
+            }
+            
+            extraProductsDict[product.productInfo.productType.ToString()].products.Add(product);
+            
             Debug.Log("Cloned product added to active products dictionary with type: " + product.productInfo.productType);
         }
         
-        
-        return activeProductsDict;
+        return extraProductsDict;
     }
 
     public override int AddedGoldFromProducts(Dictionary<string, ShopManager.ProductHolder> activeProductsDict, Customer customer)
