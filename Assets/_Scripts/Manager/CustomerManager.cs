@@ -103,8 +103,9 @@ public class CustomerManager : MonoBehaviour
     
     public void RemoveLiveCustomer(RemoveCustomerEvent e)
     {
-        liveCustomers.Remove(e.customer);
-
+        //Remove the first entry from the live customers list
+        liveCustomers.Remove(liveCustomers[0]);
+        
         if (liveCustomers.Count == 0) EventBus<EndTurnEvent>.Raise(new EndTurnEvent());
     }
     
