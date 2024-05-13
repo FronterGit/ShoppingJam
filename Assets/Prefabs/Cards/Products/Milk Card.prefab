@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inHand: 0
   title: Milk
-  description: Worth $1. No Additional effect.
+  description: Worth $1.
   rarity: 0
   category: 0
   energyCost: 1

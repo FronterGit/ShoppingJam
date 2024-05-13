@@ -48,18 +48,29 @@ public class Customer : MonoBehaviour
                 goldToAdd += card.AddedGoldFromProducts(activeProductsDict, this);
             }
         }
+        
+        Debug.Log("Gold to add: " + goldToAdd);
 
         //Get the active upgrades from the shop manager
         List<Card> activeUpgrades = ShopManager.GetActiveUpgradesFunc?.Invoke();
 
         //Loop over all active upgrades and let them modify the active products dictionary
-        foreach (UpgradeCardBeviour upgradeCard in activeUpgrades)
+
+        if (activeUpgrades.Count > 0)
         {
-            Dictionary<string, ShopManager.ProductHolder> extraProductsDict =
-                upgradeCard.GetNewActiveProductsDict(activeProductsDict);
+            foreach (UpgradeCardBeviour upgradeCard in activeUpgrades)
+            {
+                Dictionary<string, ShopManager.ProductHolder> extraProductsDict =
+                    upgradeCard.GetNewActiveProductsDict(activeProductsDict);
             
-            activeProductsDict = extraProductsDict;
+                activeProductsDict = extraProductsDict;
+            }
         }
+        else
+        {
+            activeProductsDict = new Dictionary<string, ShopManager.ProductHolder>();
+        }
+
 
         switch (customerType)
         {

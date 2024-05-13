@@ -102,7 +102,7 @@ MonoBehaviour:
   speed: 2
   canMove: 1
   reachedGoal: 0
-  storeTime: 5
+  storeTime: 3
   backSprite: {fileID: 21300000, guid: dc702ca7ce334aa478a2e3f9f040b7fb, type: 3}
   goalPoint: {x: 0, y: 0, z: 0}
   customerType: 0

@@ -2868,6 +2868,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0d3144ca87e7c6f42954301598f79c11, type: 3}
   - {fileID: 8300000, guid: deda2fb3337d424429d1ec47328a058e, type: 3}
   - {fileID: 8300000, guid: 80f001a009da43b4fb7e98f42938df16, type: 3}
+  - {fileID: 8300000, guid: 0fb41f1197367d642af8ac898cab85ac, type: 3}
   sfxVolume: 1
   sfxVolumeSlider: {fileID: 0}
   musicVolume: 1

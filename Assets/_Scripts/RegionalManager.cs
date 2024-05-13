@@ -17,6 +17,7 @@ public class RegionalManager : MonoBehaviour {
     [SerializeField] private String happy;
 
     private bool fired;
+    private bool finished;
 
 
     private void OnEnable() {
@@ -56,10 +57,18 @@ public class RegionalManager : MonoBehaviour {
         else if (revenue == expectedRevenue) {
             // the revenue is equal to the expected revenue
             evaluationText.SetText(okay);
+            
+            if(TurnManager.turnIndex >= TurnManager.GetTurns().Count) {
+                finished = true;
+            }
         }
         else {
             // the revenue is more than expected
             evaluationText.SetText(happy);
+            
+            if(TurnManager.turnIndex >= TurnManager.GetTurns().Count) {
+                finished = true;
+            }
         }
 
         expectedRevenueText.SetText("Expected Revenue: " + expectedRevenue);
@@ -74,6 +83,11 @@ public class RegionalManager : MonoBehaviour {
         popup.SetActive(false);
         
         if (fired)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+        
+        if (finished)
         {
             SceneManager.LoadScene("MainMenu");
         }

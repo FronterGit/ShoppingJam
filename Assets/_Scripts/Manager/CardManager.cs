@@ -122,7 +122,6 @@ public class CardManager : MonoBehaviour {
     }
 
     public void SetCardInHand(Card card) {
-        //TODO: Hand size limit?
         OnSuccessfulCardAction(card);
 
         //Remove any spawned cards
@@ -133,6 +132,7 @@ public class CardManager : MonoBehaviour {
         if (AudioManager.instance != null) AudioManager.instance.PlaySound("card_interact_1");
 
         cardsToPick.Clear();
+        RespawnHand();
     }
 
     public void DiscardCard(Card card) {
@@ -158,6 +158,8 @@ public class CardManager : MonoBehaviour {
 
             //Destroy the card game object
             Destroy(card.gameObject);
+            
+            RespawnHand();
         }
         //If the card was not in our hand, add it to the hand list and create a new game object to show the card is in our hand
         else {
@@ -171,6 +173,32 @@ public class CardManager : MonoBehaviour {
 
             Destroy(card.gameObject);
         }
+    }
+    
+    public void RespawnHand() {
+        //Make a copy of the hand
+        List<Card> handCopy = hand;
+        List<Card> newHand = new List<Card>();
+        
+
+
+        foreach (var card in handCopy){
+            int cardPosition = handCopy.IndexOf(card);
+            float offset = canvas.pixelRect.width / 2;
+            GameObject newCard = Instantiate(card.gameObject, new Vector3((cardPosition * cardSpacing) + offset, cardHeight, 0),
+                Quaternion.identity, cardHandParent);
+            Card newCardScript = newCard.GetComponent<Card>();
+            newCardScript.inHand = true;
+            newHand.Add(newCardScript);
+        }
+        
+        foreach (var card in hand) {
+            Destroy(card.gameObject);
+        }
+        hand.Clear();
+        hand = newHand;
+        
+
     }
 
     private void OpenPack(CardPackEvent e) {

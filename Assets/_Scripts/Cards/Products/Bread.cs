@@ -11,7 +11,7 @@ public class Bread : Card
         int totalValue = 0;
         foreach (var productHolder in activeProductsDict)
         {
-            if (productHolder.Key != "General")
+            if (productHolder.Value.products.Count > 0)
             {
                 totalValue++;
             }
