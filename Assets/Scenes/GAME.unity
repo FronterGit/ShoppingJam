@@ -2593,24 +2593,24 @@ MonoBehaviour:
 
 
     You
-    do remember how, right?
+    do remember how to, right?
 
 
-    In case you don''t, let me take you through it.
-
-
-    When
-    you start turn, customers will come to your store. They will buy products from
-    your your store.
-
-
-    You can buy new products (and more) in the shop panel.
-    Remember: activating cards costs energy! You can right click a card to discard
+    In case you don''t, let me take you through
     it.
 
 
-    Every few turns I will come in to check in you. If you do good, I will
-    give you the promotion you''ve always wanted (lol). Good luck!
+    When you start turn, customers will come to your store. They will buy
+    products from your your store.
+
+
+    You can buy new products (and more) in the
+    shop panel. Remember: activating cards costs energy! You can right click a card
+    to discard it.
+
+
+    Every few turns I will come in to check in you. If you do
+    good, I will give you the promotion you''ve always wanted (lol). Good luck!
 
 '
   m_isRightToLeft: 0
@@ -5466,7 +5466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1320412861
 RectTransform:
   m_ObjectHideFlags: 0

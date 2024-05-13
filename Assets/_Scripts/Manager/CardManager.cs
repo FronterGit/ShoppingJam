@@ -144,6 +144,7 @@ public class CardManager : MonoBehaviour {
         if (discard) {
             hand.Remove(card);
             Destroy(card.gameObject);
+            RespawnHand();
             return;
         }
 
