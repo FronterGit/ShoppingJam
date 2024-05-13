@@ -113,6 +113,7 @@ public class Customer : MonoBehaviour
     {
         yield return new WaitForSeconds(storeTime);
         customerBehaviour.Buy(goldToAdd);
+        if (AudioManager.instance != null) AudioManager.instance.PlaySound("money_gained");
         canMove = true;
         spriteRenderer.sprite = backSprite;
     }
