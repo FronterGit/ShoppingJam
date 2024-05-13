@@ -1,6 +1,7 @@
 using System;
 using EventBus;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RegionalManager : MonoBehaviour {
     [SerializeField] private GameObject popup;
@@ -14,6 +15,8 @@ public class RegionalManager : MonoBehaviour {
 
     [SerializeField] private String okay;
     [SerializeField] private String happy;
+
+    private bool fired;
 
 
     private void OnEnable() {
@@ -48,6 +51,7 @@ public class RegionalManager : MonoBehaviour {
         if (revenue < expectedRevenue) {
             // if the revenue is less than the expected revenue, do stuff
             evaluationText.SetText(mad);
+            fired = true;
         }
         else if (revenue == expectedRevenue) {
             // the revenue is equal to the expected revenue
@@ -68,5 +72,10 @@ public class RegionalManager : MonoBehaviour {
     private void close() {
         evaluationText.SetText("");
         popup.SetActive(false);
+        
+        if (fired)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }
